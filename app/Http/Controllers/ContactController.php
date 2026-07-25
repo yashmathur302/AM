@@ -19,7 +19,6 @@ class ContactController extends Controller
             'seoDescription' => $seo['description'],
             'seoKeyword' => $seo['keyword'],
             'seoImage' => $seo['image'],
-            'pageClass' => 'page-contact',
         ]);
     }
 
@@ -47,7 +46,6 @@ class ContactController extends Controller
             'seoTitle' => 'Thank You',
             'seoDescription' => 'Thank you for contacting us. Our team will be in touch shortly.',
             'seoNoindex' => true,
-            'pageClass' => 'page-contact-thanks',
         ]);
     }
 }

@@ -15,18 +15,20 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
     <x-organization-jsonld :nonce="$cspNonce" />
     @stack('head')
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <a class="u-sr-only-focusable" href="#main-content">Skip to main content</a>
+<body class="text-slate-800">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-navy-900">
+        Skip to main content
+    </a>
 
-    @include('partials.header')
+    <x-layout.header />
 
-    <main id="main-content" class="{{ $pageClass ?? '' }}">
+    <main id="main-content">
         @yield('content')
     </main>
 
-    @include('partials.footer')
+    <x-layout.footer />
 
     @stack('scripts')
 </body>

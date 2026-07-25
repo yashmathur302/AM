@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Login | {{ config('app.name') }}</title>
     <meta name="robots" content="noindex, nofollow">
-    @vite(['resources/sass/admin.scss', 'resources/js/admin.js'])
+    @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 </head>
-<body>
-    <div class="admin-login">
-        <div class="admin-login__panel">
-            <h1 class="admin-login__title">{{ config('app.name') }} Admin</h1>
+<body class="bg-navy-900">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-sm bg-white rounded-lg shadow-md p-8">
+            <h1 class="text-center mb-6">{{ config('app.name') }} Admin</h1>
 
             @if ($errors->any())
-                <div class="admin-alert admin-alert--error" role="alert">
+                <div class="mb-4 rounded bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
                     {{ $errors->first() }}
                 </div>
             @endif
@@ -21,23 +21,11 @@
             <form method="POST" action="{{ route('admin.login.attempt') }}">
                 @csrf
 
-                <div class="c-form-group">
-                    <label class="c-form-label" for="email">Email</label>
-                    <input class="c-form-control" type="email" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
-                </div>
+                <x-ui.form.input name="email" type="email" label="Email" required autofocus autocomplete="username" />
+                <x-ui.form.input name="password" type="password" label="Password" required autocomplete="current-password" />
+                <x-ui.form.checkbox name="remember" label="Remember me" />
 
-                <div class="c-form-group">
-                    <label class="c-form-label" for="password">Password</label>
-                    <input class="c-form-control" type="password" id="password" name="password" required autocomplete="current-password">
-                </div>
-
-                <div class="c-form-group">
-                    <label class="c-form-label">
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                </div>
-
-                <button type="submit" class="c-btn c-btn--primary c-btn--block">Log In</button>
+                <x-ui.button type="submit" variant="primary" block>Log In</x-ui.button>
             </form>
         </div>
     </div>

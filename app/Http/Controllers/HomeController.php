@@ -17,7 +17,6 @@ class HomeController extends Controller
             'seoDescription' => $seo['description'],
             'seoKeyword' => $seo['keyword'],
             'seoImage' => $seo['image'],
-            'pageClass' => 'page-home',
             'latestPosts' => Post::published()->latest('published_at')->take(3)->get(),
             'teamPreview' => TeamMember::active()->take(3)->get(),
         ]);

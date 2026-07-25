@@ -11,19 +11,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const closeNav = () => {
-        nav.classList.remove('is-open');
-        overlay.classList.remove('is-open');
+        nav.classList.add('translate-x-full');
+        nav.classList.remove('translate-x-0');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100', 'pointer-events-auto');
         toggle.setAttribute('aria-expanded', 'false');
     };
 
     const openNav = () => {
-        nav.classList.add('is-open');
-        overlay.classList.add('is-open');
+        nav.classList.remove('translate-x-full');
+        nav.classList.add('translate-x-0');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100', 'pointer-events-auto');
         toggle.setAttribute('aria-expanded', 'true');
     };
 
     toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.contains('is-open');
+        const isOpen = nav.classList.contains('translate-x-0');
         isOpen ? closeNav() : openNav();
     });
 

@@ -1,45 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero">
-        <div class="hero__inner">
+    <section class="bg-offwhite py-16">
+        <div class="max-w-3xl mx-auto px-4">
             <h1>{{ $post->title }}</h1>
-            <div class="hero__meta">
+            <div class="mt-3 flex gap-4 text-sm text-slate-500">
                 <span>{{ $post->published_at->format('F j, Y') }}</span>
                 <span>By {{ $post->author->name }}</span>
             </div>
         </div>
     </section>
 
-    <article class="article">
-        <div class="article__inner">
+    <article class="py-16">
+        <div class="max-w-3xl mx-auto px-4">
             @if ($post->featured_image_url)
-                <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" width="760" height="428">
+                <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" width="760" height="428" class="rounded-lg mb-8">
             @endif
 
-            <div class="article__body">
+            <div class="prose prose-slate max-w-none prose-headings:font-heading prose-a:text-navy-700">
                 {!! $post->body !!}
             </div>
         </div>
     </article>
 
     @if ($related->isNotEmpty())
-        <section class="related">
-            <div class="related__inner">
-                <h2>Related Insights</h2>
-                <div class="c-grid">
-                    @foreach ($related as $item)
-                        <div class="c-card">
-                            @if ($item->featured_image_url)
-                                <img class="c-card__media" src="{{ $item->featured_image_url }}" alt="{{ $item->title }}" loading="lazy" width="400" height="250">
-                            @endif
-                            <div class="c-card__body">
-                                <h3 class="c-card__title">{{ $item->title }}</h3>
-                                <a class="c-card__link" href="{{ route('blog.show', $item) }}">Read more &rarr;</a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+        <section class="bg-offwhite py-16">
+            <div class="max-w-6xl mx-auto px-4">
+                <x-blog.grid :posts="$related" heading="Related Insights" />
             </div>
         </section>
     @endif

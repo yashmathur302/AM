@@ -16,7 +16,6 @@ class AboutController extends Controller
             'seoDescription' => $seo['description'],
             'seoKeyword' => $seo['keyword'],
             'seoImage' => $seo['image'],
-            'pageClass' => 'page-about',
             'leadership' => TeamMember::active()->get(),
         ]);
     }

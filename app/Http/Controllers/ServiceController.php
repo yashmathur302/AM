@@ -15,7 +15,6 @@ class ServiceController extends Controller
             'seoDescription' => $seo['description'],
             'seoKeyword' => $seo['keyword'],
             'seoImage' => $seo['image'],
-            'pageClass' => 'page-services',
         ]);
     }
 }

@@ -3,54 +3,54 @@
 @section('admin-title', 'Dashboard')
 
 @section('admin-content')
-    <div class="admin-stats">
-        <div class="admin-stat">
-            <div class="admin-stat__value">{{ $postCount }}</div>
-            <div class="admin-stat__label">Total Posts</div>
-        </div>
-        <div class="admin-stat">
-            <div class="admin-stat__value">{{ $publishedPostCount }}</div>
-            <div class="admin-stat__label">Published Posts</div>
-        </div>
-        <div class="admin-stat">
-            <div class="admin-stat__value">{{ $teamCount }}</div>
-            <div class="admin-stat__label">Team Members</div>
-        </div>
-        <div class="admin-stat">
-            <div class="admin-stat__value">{{ $unreadLeadCount }}</div>
-            <div class="admin-stat__label">Unread Leads</div>
-        </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <x-admin.panel class="mb-0">
+            <div class="font-heading text-2xl text-navy-800">{{ $postCount }}</div>
+            <div class="text-sm text-slate-600">Total Posts</div>
+        </x-admin.panel>
+        <x-admin.panel class="mb-0">
+            <div class="font-heading text-2xl text-navy-800">{{ $publishedPostCount }}</div>
+            <div class="text-sm text-slate-600">Published Posts</div>
+        </x-admin.panel>
+        <x-admin.panel class="mb-0">
+            <div class="font-heading text-2xl text-navy-800">{{ $teamCount }}</div>
+            <div class="text-sm text-slate-600">Team Members</div>
+        </x-admin.panel>
+        <x-admin.panel class="mb-0">
+            <div class="font-heading text-2xl text-navy-800">{{ $unreadLeadCount }}</div>
+            <div class="text-sm text-slate-600">Unread Leads</div>
+        </x-admin.panel>
     </div>
 
-    <div class="admin-panel">
-        <h2>Recent Leads</h2>
-        <table class="admin-table">
+    <x-admin.panel>
+        <h2 class="mb-4">Recent Leads</h2>
+        <table class="w-full text-sm">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Received</th>
-                    <th>Status</th>
+                <tr class="text-left text-xs uppercase tracking-wide text-slate-500 border-b border-slate-100">
+                    <th class="py-3">Name</th>
+                    <th class="py-3">Email</th>
+                    <th class="py-3">Received</th>
+                    <th class="py-3">Status</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($recentLeads as $lead)
-                    <tr>
-                        <td><a href="{{ route('admin.leads.show', $lead) }}">{{ $lead->name }}</a></td>
-                        <td>{{ $lead->email }}</td>
-                        <td>{{ $lead->created_at->diffForHumans() }}</td>
-                        <td>
+                    <tr class="border-b border-slate-100 hover:bg-offwhite">
+                        <td class="py-3"><a class="hover:text-gold-600" href="{{ route('admin.leads.show', $lead) }}">{{ $lead->name }}</a></td>
+                        <td class="py-3">{{ $lead->email }}</td>
+                        <td class="py-3">{{ $lead->created_at->diffForHumans() }}</td>
+                        <td class="py-3">
                             @if ($lead->is_read)
-                                <span class="admin-badge admin-badge--published">Read</span>
+                                <x-admin.badge variant="success">Read</x-admin.badge>
                             @else
-                                <span class="admin-badge admin-badge--unread">Unread</span>
+                                <x-admin.badge variant="warning">Unread</x-admin.badge>
                             @endif
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="4">No leads yet.</td></tr>
+                    <tr><td colspan="4" class="py-3 text-slate-500">No leads yet.</td></tr>
                 @endforelse
             </tbody>
         </table>
-    </div>
+    </x-admin.panel>
 @endsection

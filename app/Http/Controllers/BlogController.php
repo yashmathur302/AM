@@ -16,7 +16,6 @@ class BlogController extends Controller
             'seoDescription' => $seo['description'],
             'seoKeyword' => $seo['keyword'],
             'seoImage' => $seo['image'],
-            'pageClass' => 'page-blog',
             'posts' => Post::published()->latest('published_at')->paginate(9),
         ]);
     }
@@ -36,7 +35,6 @@ class BlogController extends Controller
                 'modified_at' => $post->updated_at->toAtomString(),
                 'author' => $post->author->name,
             ],
-            'pageClass' => 'page-blog-single',
             'post' => $post,
             'related' => Post::published()
                 ->where('id', '!=', $post->id)

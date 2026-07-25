@@ -3,46 +3,48 @@
 @section('admin-title', 'Contact Leads')
 
 @section('admin-content')
-    <div class="admin-panel">
-        <table class="admin-table">
+    <x-admin.panel>
+        <table class="w-full text-sm">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Service Interest</th>
-                    <th>Received</th>
-                    <th>Status</th>
-                    <th></th>
+                <tr class="text-left text-xs uppercase tracking-wide text-slate-500 border-b border-slate-100">
+                    <th class="py-3">Name</th>
+                    <th class="py-3">Email</th>
+                    <th class="py-3">Service Interest</th>
+                    <th class="py-3">Received</th>
+                    <th class="py-3">Status</th>
+                    <th class="py-3"></th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($leads as $lead)
-                    <tr>
-                        <td><a href="{{ route('admin.leads.show', $lead) }}">{{ $lead->name }}</a></td>
-                        <td>{{ $lead->email }}</td>
-                        <td>{{ $lead->service_interest ?? '-' }}</td>
-                        <td>{{ $lead->created_at->format('M j, Y g:ia') }}</td>
-                        <td>
+                    <tr class="border-b border-slate-100 hover:bg-offwhite">
+                        <td class="py-3"><a class="hover:text-gold-600" href="{{ route('admin.leads.show', $lead) }}">{{ $lead->name }}</a></td>
+                        <td class="py-3">{{ $lead->email }}</td>
+                        <td class="py-3">{{ $lead->service_interest ?? '-' }}</td>
+                        <td class="py-3">{{ $lead->created_at->format('M j, Y g:ia') }}</td>
+                        <td class="py-3">
                             @if ($lead->is_read)
-                                <span class="admin-badge admin-badge--published">Read</span>
+                                <x-admin.badge variant="success">Read</x-admin.badge>
                             @else
-                                <span class="admin-badge admin-badge--unread">Unread</span>
+                                <x-admin.badge variant="warning">Unread</x-admin.badge>
                             @endif
                         </td>
-                        <td class="admin-table__actions">
+                        <td class="py-3">
                             <form method="POST" action="{{ route('admin.leads.destroy', $lead) }}" data-confirm="Delete this lead?">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="c-btn c-btn--outline">Delete</button>
+                                <x-ui.button type="submit" variant="outline">Delete</x-ui.button>
                             </form>
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="6">No leads yet.</td></tr>
+                    <tr><td colspan="6" class="py-3 text-slate-500">No leads yet.</td></tr>
                 @endforelse
             </tbody>
         </table>
-    </div>
+    </x-admin.panel>
 
-    {{ $leads->links() }}
+    <div class="flex gap-2">
+        {{ $leads->links() }}
+    </div>
 @endsection

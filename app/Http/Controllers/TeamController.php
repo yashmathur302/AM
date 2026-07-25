@@ -16,7 +16,6 @@ class TeamController extends Controller
             'seoDescription' => $seo['description'],
             'seoKeyword' => $seo['keyword'],
             'seoImage' => $seo['image'],
-            'pageClass' => 'page-team',
             'members' => TeamMember::active()->get(),
         ]);
     }

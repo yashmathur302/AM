@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "./theme.css";
+@plugin "@tailwindcss/typography";
+
+/* Small set of base overrides — everything else is composed with utility
+   classes directly in Blade components/views, never inline styles. */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply text-slate-800 font-body antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading font-bold text-navy-900 leading-tight;
+    }
+
+    h1 {
+        @apply text-3xl sm:text-4xl lg:text-5xl;
+    }
+
+    h2 {
+        @apply text-2xl sm:text-3xl;
+    }
+
+    h3 {
+        @apply text-xl sm:text-2xl;
+    }
+
+    h4 {
+        @apply text-lg;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
