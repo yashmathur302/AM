@@ -1,0 +1,98 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.page-blog {
+    .hero {
+        padding-block: $space-7 $space-5;
+        background-color: $color-offwhite;
+
+        &__inner {
+            @include container;
+        }
+    }
+
+    .listing {
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+        }
+
+        &__filters {
+            margin-bottom: $space-6;
+            display: flex;
+            flex-wrap: wrap;
+            gap: $space-3;
+        }
+    }
+
+    .pagination {
+        margin-top: $space-7;
+        display: flex;
+        justify-content: center;
+        gap: $space-2;
+    }
+}
+
+// Single article page — separate scope from the blog listing above.
+.page-blog-single {
+    .hero {
+        padding-block: $space-7 $space-5;
+        background-color: $color-offwhite;
+
+        &__inner {
+            @include container;
+            max-width: 760px;
+        }
+
+        &__meta {
+            margin-top: $space-3;
+            display: flex;
+            gap: $space-4;
+            font-size: 0.85rem;
+            color: $color-grey-500;
+        }
+    }
+
+    .article {
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+            max-width: 760px;
+        }
+
+        &__body {
+            font-size: 1.05rem;
+            line-height: 1.75;
+
+            h2, h3 {
+                margin-top: $space-6;
+                margin-bottom: $space-3;
+            }
+
+            p {
+                margin-bottom: $space-4;
+            }
+
+            img {
+                border-radius: $radius-md;
+                margin-block: $space-5;
+            }
+
+            a {
+                color: $color-navy-700;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .related {
+        background-color: $color-offwhite;
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Scoped to the about page only — see resources/sass/pages/_home.scss for
+// the scoping rationale.
+
+.page-about {
+    .hero {
+        color: $color-white;
+        background: linear-gradient(135deg, $color-navy-800, $color-navy-600);
+        padding-block: $space-7;
+
+        &__inner {
+            @include container;
+        }
+    }
+
+    .story {
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+            display: grid;
+            gap: $space-6;
+
+            @include respond-up('lg') {
+                grid-template-columns: 1.1fr 0.9fr;
+                align-items: center;
+            }
+        }
+    }
+
+    .values {
+        background-color: $color-offwhite;
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+        }
+
+        &__grid {
+            margin-top: $space-6;
+            display: grid;
+            gap: $space-5;
+
+            @include respond-up('sm') {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include respond-up('lg') {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        &__item {
+            background-color: $color-white;
+            padding: $space-5;
+            border-radius: $radius-md;
+            box-shadow: $shadow-sm;
+        }
+    }
+
+    .leadership {
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+        }
+    }
+}

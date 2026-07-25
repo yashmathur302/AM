@@ -1,0 +1,20 @@
+// Single Vite entry point. Compiles to one minified app.css.
+// See resources/sass/README.md for the CSS architecture/naming convention.
+
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/utilities';
+
+@use 'layout/header';
+@use 'layout/footer';
+
+@use 'components/buttons';
+@use 'components/forms';
+@use 'components/cards';
+
+@use 'pages/home';
+@use 'pages/about';
+@use 'pages/services';
+@use 'pages/contact';
+@use 'pages/blog';
+@use 'pages/team';

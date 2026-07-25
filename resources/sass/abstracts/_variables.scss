@@ -1,0 +1,69 @@
+// ==========================================================================
+// Design tokens shared across the whole site.
+// Update these once the client's brand palette / type scale is finalised.
+// ==========================================================================
+
+// Colour palette — investment banking / finance feel: navy, gold accent.
+$color-navy-900: #0a1930;
+$color-navy-800: #0f2544;
+$color-navy-700: #16345f;
+$color-navy-600: #1f4a86;
+$color-gold-500: #c8a24a;
+$color-gold-600: #ab8636;
+
+$color-white: #ffffff;
+$color-offwhite: #f7f8fa;
+$color-grey-100: #eef0f3;
+$color-grey-300: #c7ccd4;
+$color-grey-500: #838b98;
+$color-grey-700: #4a5261;
+$color-grey-900: #1c212b;
+
+$color-success: #1e8e5a;
+$color-error: #c0392b;
+
+$color-text: $color-grey-900;
+$color-text-muted: $color-grey-700;
+$color-bg: $color-white;
+$color-link: $color-navy-700;
+
+// Typography
+$font-heading: 'Georgia', 'Times New Roman', serif;
+$font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+$font-size-base: 16px;
+$line-height-base: 1.6;
+
+// Spacing scale (rem)
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 1rem;
+$space-4: 1.5rem;
+$space-5: 2rem;
+$space-6: 3rem;
+$space-7: 4.5rem;
+$space-8: 6rem;
+
+// Layout
+$container-max-width: 1200px;
+$container-padding: $space-4;
+
+// Breakpoints (min-width, mobile-first)
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// Radii / shadows
+$radius-sm: 4px;
+$radius-md: 8px;
+$shadow-sm: 0 1px 3px rgba(10, 25, 48, 0.08);
+$shadow-md: 0 4px 16px rgba(10, 25, 48, 0.12);
+
+// Transitions
+$transition-base: 0.2s ease-in-out;
+
+// Z-index scale
+$z-header: 100;
+$z-overlay: 200;
+$z-modal: 300;

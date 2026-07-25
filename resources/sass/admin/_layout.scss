@@ -1,0 +1,115 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.admin-layout {
+    min-height: 100vh;
+    background-color: $color-offwhite;
+
+    @include respond-up('lg') {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+    }
+}
+
+.admin-sidebar {
+    background-color: $color-navy-900;
+    color: $color-white;
+    padding: $space-4;
+
+    &__brand {
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: $space-5;
+        display: block;
+        color: $color-white;
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+    }
+
+    &__link {
+        display: block;
+        padding: $space-2 $space-3;
+        border-radius: $radius-sm;
+        color: rgba($color-white, 0.8);
+
+        &:hover,
+        &.is-active {
+            background-color: rgba($color-white, 0.08);
+            color: $color-white;
+        }
+    }
+
+    &__form {
+        margin-top: $space-5;
+    }
+}
+
+.admin-main {
+    padding: $space-5;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-5;
+}
+
+.admin-panel {
+    background-color: $color-white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-sm;
+    padding: $space-5;
+    margin-bottom: $space-5;
+}
+
+.admin-stats {
+    display: grid;
+    gap: $space-4;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: $space-5;
+
+    @include respond-up('md') {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.admin-stat {
+    background-color: $color-white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-sm;
+    padding: $space-4;
+
+    &__value {
+        @include heading-font;
+        font-size: 1.75rem;
+        color: $color-navy-800;
+    }
+
+    &__label {
+        font-size: 0.85rem;
+        color: $color-text-muted;
+    }
+}
+
+.admin-alert {
+    padding: $space-3 $space-4;
+    border-radius: $radius-sm;
+    margin-bottom: $space-4;
+    font-size: 0.9rem;
+
+    &--success {
+        background-color: rgba($color-success, 0.12);
+        color: $color-success;
+    }
+
+    &--error {
+        background-color: rgba($color-error, 0.12);
+        color: $color-error;
+    }
+}

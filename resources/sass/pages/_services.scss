@@ -1,0 +1,95 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.page-services {
+    .hero {
+        color: $color-white;
+        background: linear-gradient(135deg, $color-navy-900, $color-navy-700);
+        padding-block: $space-7;
+
+        &__inner {
+            @include container;
+        }
+    }
+
+    .listing {
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+        }
+    }
+
+    .process {
+        background-color: $color-offwhite;
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+        }
+
+        &__steps {
+            margin-top: $space-6;
+            display: grid;
+            gap: $space-5;
+
+            @include respond-up('md') {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        &__step {
+            text-align: center;
+        }
+
+        &__step-number {
+            @include heading-font;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: $color-navy-900;
+            color: $color-gold-500;
+            margin-inline: auto;
+            margin-bottom: $space-3;
+        }
+    }
+}
+
+// Single service detail page — deliberately its own scope, distinct from the
+// services listing page above, even though both may use words like ".hero".
+.page-service-single {
+    .hero {
+        color: $color-white;
+        background: linear-gradient(135deg, $color-navy-800, $color-navy-600);
+        padding-block: $space-7;
+
+        &__inner {
+            @include container;
+        }
+    }
+
+    .content {
+        padding-block: $space-8;
+
+        &__inner {
+            @include container;
+
+            @include respond-up('lg') {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: $space-6;
+            }
+        }
+
+        &__sidebar {
+            margin-top: $space-6;
+
+            @include respond-up('lg') {
+                margin-top: 0;
+            }
+        }
+    }
+}

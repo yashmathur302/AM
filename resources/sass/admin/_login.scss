@@ -1,0 +1,25 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.admin-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-navy-900;
+    padding: $space-4;
+
+    &__panel {
+        width: 100%;
+        max-width: 380px;
+        background-color: $color-white;
+        border-radius: $radius-md;
+        box-shadow: $shadow-md;
+        padding: $space-6;
+    }
+
+    &__title {
+        margin-bottom: $space-5;
+        text-align: center;
+    }
+}

@@ -1,0 +1,127 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Sitewide header/nav. Prefixed `l-` (layout) — shared structural chrome,
+// distinct from `page-*` scoped, per-page section styling.
+
+.l-header {
+    position: sticky;
+    top: 0;
+    z-index: $z-header;
+    background-color: $color-navy-900;
+    box-shadow: $shadow-sm;
+}
+
+.l-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: $space-3;
+}
+
+.l-header__logo {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: $color-white;
+}
+
+.l-header__logo-mark {
+    color: $color-gold-500;
+}
+
+.l-nav__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: $space-2;
+
+    @include respond-up('lg') {
+        display: none;
+    }
+}
+
+.l-nav__toggle-bar {
+    width: 24px;
+    height: 2px;
+    background-color: $color-white;
+    transition: transform $transition-base, opacity $transition-base;
+}
+
+.l-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(320px, 85vw);
+    background-color: $color-navy-900;
+    padding: $space-6 $space-4;
+    transform: translateX(100%);
+    transition: transform $transition-base;
+    overflow-y: auto;
+
+    &.is-open {
+        transform: translateX(0);
+    }
+
+    @include respond-up('lg') {
+        position: static;
+        width: auto;
+        background: none;
+        padding: 0;
+        transform: none;
+        overflow: visible;
+    }
+}
+
+.l-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+
+    @include respond-up('lg') {
+        flex-direction: row;
+        align-items: center;
+        gap: $space-5;
+    }
+}
+
+.l-nav__link {
+    display: block;
+    color: rgba($color-white, 0.85);
+    font-weight: 500;
+    font-size: 0.95rem;
+
+    &:hover,
+    &.is-active {
+        color: $color-gold-500;
+    }
+}
+
+.l-nav__cta {
+    margin-top: $space-4;
+
+    @include respond-up('lg') {
+        margin-top: 0;
+    }
+}
+
+.l-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color-navy-900, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-base;
+    z-index: calc(#{$z-header} - 1);
+
+    &.is-open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @include respond-up('lg') {
+        display: none;
+    }
+}
