@@ -14,7 +14,6 @@ use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TeamController;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -55,13 +54,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/leads/{lead}', [LeadController::class, 'show'])->name('leads.show');
         Route::delete('/leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
     });
-});
-
-// TEMPORARY — remove this route once the initial cPanel deployment is
-// confirmed working. Runs migrations from a browser when CLI/cron access
-// isn't available. Protected by a long random token; still delete it ASAP.
-Route::get('/system/deploy-de1df3cf707c459f4b967a70f50666fafcfba35242a50c97', function () {
-    Artisan::call('migrate', ['--force' => true]);
-
-    return response('<pre>'.e(Artisan::output()).'</pre>');
 });
