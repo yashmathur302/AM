@@ -25,12 +25,15 @@
             class="fixed inset-y-0 right-0 z-50 w-80 max-w-[85vw] bg-navy-900 px-6 py-8 overflow-y-auto translate-x-full transition-transform duration-200"
         >
             @php
+                // Transactions, Sectors, and Life @ Aurum have no route yet —
+                // left as label-only placeholders until those pages exist.
                 $navLinks = [
-                    ['route' => 'home', 'pattern' => 'home', 'label' => 'Home'],
                     ['route' => 'about', 'pattern' => 'about', 'label' => 'About'],
                     ['route' => 'services.index', 'pattern' => 'services.index', 'label' => 'Services'],
-                    ['route' => 'team.index', 'pattern' => 'team.index', 'label' => 'Team'],
+                    ['route' => null, 'pattern' => null, 'label' => 'Transactions'],
+                    ['route' => null, 'pattern' => null, 'label' => 'Sectors'],
                     ['route' => 'blog.index', 'pattern' => 'blog.*', 'label' => 'Insights'],
+                    ['route' => null, 'pattern' => null, 'label' => 'Life @ Aurum'],
                     ['route' => 'contact', 'pattern' => 'contact', 'label' => 'Contact'],
                 ];
             @endphp
@@ -43,8 +46,8 @@
                 @foreach ($navLinks as $link)
                     <li>
                         <a
-                            href="{{ route($link['route']) }}"
-                            class="block text-lg font-medium {{ request()->routeIs($link['pattern']) ? 'text-gold-500' : 'text-white/85 hover:text-gold-500' }}"
+                            href="{{ $link['route'] ? route($link['route']) : '#' }}"
+                            class="block text-lg font-medium {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'text-gold-500' : 'text-white/85 hover:text-gold-500' }}"
                         >
                             {{ $link['label'] }}
                         </a>
