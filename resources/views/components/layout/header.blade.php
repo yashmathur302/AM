@@ -41,14 +41,18 @@
             aria-expanded="false"
             aria-controls="primary-nav"
             aria-label="Toggle menu"
-            class="relative flex items-center justify-center rounded bg-white/10 p-3 hover:bg-white/20 transition-colors shrink-0"
+            class="relative flex items-center gap-3 rounded-xl bg-white px-5 py-3 text-navy-900 shadow-sm hover:bg-white/90 transition-colors shrink-0"
         >
-            <span class="flex flex-col gap-1.5 group-data-[nav-state=open]:hidden">
-                <span class="w-5 h-0.5 bg-white"></span>
-                <span class="w-5 h-0.5 bg-white"></span>
-                <span class="w-5 h-0.5 bg-white"></span>
+            <span class="text-sm font-bold tracking-wide group-data-[nav-state=open]:hidden">MENU</span>
+            <span class="text-sm font-bold tracking-wide hidden group-data-[nav-state=open]:inline">CLOSE</span>
+
+            <span class="grid grid-cols-2 gap-0.5 group-data-[nav-state=open]:hidden" aria-hidden="true">
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
             </span>
-            <span class="hidden group-data-[nav-state=open]:block text-white text-xl leading-none">&times;</span>
+            <span class="hidden group-data-[nav-state=open]:block text-lg leading-none" aria-hidden="true">&times;</span>
         </button>
 
         {{-- Mobile: off-canvas drawer, never shown at lg+ --}}
