@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="text-white bg-gradient-to-br from-navy-900 to-navy-700 py-16">
+    <section class="bg-blue-50 py-16">
         <div class="max-w-6xl mx-auto px-4">
-            <h1 class="text-white">Our Team</h1>
-            <p class="mt-4 text-white/85">Meet the advisors behind our engagements.</p>
+            <h1>Our Team</h1>
+            <p class="mt-4 text-slate-600">Meet the advisors behind our engagements.</p>
         </div>
     </section>
 

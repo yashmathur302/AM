@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="text-white bg-gradient-to-br from-navy-800 to-navy-600 py-16">
+    <section class="bg-blue-50 py-16">
         <div class="max-w-6xl mx-auto px-4">
-            <h1 class="text-white">About Us</h1>
-            <p class="mt-4 text-white/85">Placeholder — replace with the firm's approved company story.</p>
+            <h1>About Us</h1>
+            <p class="mt-4 text-slate-600">Placeholder — replace with the firm's approved company story.</p>
         </div>
     </section>
 

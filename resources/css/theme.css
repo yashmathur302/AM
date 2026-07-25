@@ -5,10 +5,20 @@
  * Change a value here once and it updates everywhere it's used.
  */
 @theme {
+    /* Dark navy — used for heading/body text only, never as a large
+       background. The site is light-themed throughout. */
     --color-navy-900: #0a1930;
     --color-navy-800: #0f2544;
     --color-navy-700: #16345f;
     --color-navy-600: #1f4a86;
+
+    /* Bright brand blue — the site's primary accent color (buttons, links,
+       icon fills, active nav state) on light/white backgrounds. */
+    --color-blue-50: #f0f5ff;
+    --color-blue-100: #e0eaff;
+    --color-blue-500: #2f6fed;
+    --color-blue-600: #2461e8;
+    --color-blue-700: #1d4fcc;
 
     --color-gold-500: #c8a24a;
     --color-gold-600: #ab8636;

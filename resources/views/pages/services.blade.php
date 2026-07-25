@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="text-white bg-gradient-to-br from-navy-900 to-navy-700 py-16">
+    <section class="bg-blue-50 py-16">
         <div class="max-w-6xl mx-auto px-4">
-            <h1 class="text-white">Our Services</h1>
-            <p class="mt-4 text-white/85">Placeholder — replace with the firm's approved services overview.</p>
+            <h1>Our Services</h1>
+            <p class="mt-4 text-slate-600">Placeholder — replace with the firm's approved services overview.</p>
         </div>
     </section>
 
@@ -37,7 +37,7 @@
                     ['step' => '4', 'title' => 'Close', 'text' => 'Finalise terms and complete the transaction.'],
                 ] as $item)
                     <div class="text-center">
-                        <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-navy-900 font-heading text-gold-500">{{ $item['step'] }}</div>
+                        <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 font-heading text-white">{{ $item['step'] }}</div>
                         <h3 class="text-lg">{{ $item['title'] }}</h3>
                         <p class="mt-2 text-sm text-slate-600">{{ $item['text'] }}</p>
                     </div>

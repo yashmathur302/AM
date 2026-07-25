@@ -8,7 +8,7 @@
 @php
     $variants = [
         'primary' => 'bg-gold-500 text-navy-900 hover:bg-gold-600 border-transparent',
-        'secondary' => 'bg-transparent text-white border-white/80 hover:bg-white/10',
+        'secondary' => 'bg-blue-600 text-white hover:bg-blue-700 border-transparent',
         'outline' => 'bg-transparent text-navy-800 border-navy-800 hover:bg-navy-800 hover:text-white',
     ];
 
