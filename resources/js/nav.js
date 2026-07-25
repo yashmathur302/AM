@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.querySelector('[data-nav-toggle]');
     const nav = document.querySelector('[data-nav]');
     const overlay = document.querySelector('[data-nav-overlay]');
+    const closeBtn = document.querySelector('[data-nav-close]');
 
     if (!toggle || !nav || !overlay) {
         return;
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     overlay.addEventListener('click', closeNav);
+    closeBtn?.addEventListener('click', closeNav);
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
