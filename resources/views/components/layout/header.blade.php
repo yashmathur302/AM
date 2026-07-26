@@ -15,7 +15,7 @@
 <header class="group sticky top-0 z-40 bg-white border-b border-slate-100" data-nav-state="closed">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
         <a href="{{ route('home') }}" class="flex items-center shrink-0">
-            <img src="{{ asset('images/logo-aurum.svg') }}" alt="Aurum" class="h-10 sm:h-12 w-auto">
+            <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-10 sm:h-12 w-auto">
         </a>
 
         {{-- Desktop: horizontal pill bar, hidden until the toggle opens it.
