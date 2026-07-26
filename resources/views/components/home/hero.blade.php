@@ -27,7 +27,7 @@
         </div>
 
         <div class="relative">
-            <h1 class="font-body font-black uppercase leading-[0.95] tracking-tight text-navy-900 text-4xl sm:text-5xl lg:text-6xl">
+            <h1 class="font-banner font-normal uppercase leading-[0.95] tracking-tight text-navy-900 text-4xl sm:text-5xl lg:text-6xl">
                 Advancing<br>
                 Startup<br>
                 Innovation
