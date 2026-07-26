@@ -28,9 +28,7 @@
 
         <div class="relative">
             <h1 class="font-banner font-normal uppercase leading-[0.95] tracking-tight text-navy-900 text-4xl sm:text-5xl lg:text-6xl">
-                Advancing<br>
-                Startup<br>
-                Innovation
+                Trust is everything.
             </h1>
             <span class="hidden sm:block absolute top-2 -right-2 lg:right-8 text-blue-600 text-3xl" aria-hidden="true">&#8599;</span>
         </div>
@@ -38,7 +36,7 @@
         <div class="flex items-start gap-4">
             <span class="mt-1 text-2xl text-gold-500" aria-hidden="true">&#10038;</span>
             <p class="max-w-[46ch] text-slate-600">
-                From MVP launch to global scaling, we provide the strategic design and high-performance technology startups need to dominate their market. Our team delivers products that matter.
+                An India-focused investment bank built on character, competence and connections — advising mid-market and large corporates across mergers, fundraising and restructuring.
             </p>
         </div>
     </div>
