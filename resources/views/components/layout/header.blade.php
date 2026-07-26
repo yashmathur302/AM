@@ -18,10 +18,15 @@
             <img src="{{ asset('images/logo-aurum.svg') }}" alt="Aurum" class="h-10 sm:h-12 w-auto">
         </a>
 
-        {{-- Desktop: horizontal pill bar, hidden until the toggle opens it --}}
+        {{-- Desktop: horizontal pill bar, hidden until the toggle opens it.
+             Plain display toggle (no width/opacity transition) — animating
+             this via max-width caused a visible height "jump" as the browser
+             re-evaluated flex-wrap at every intermediate width during the
+             transition. A one-frame reveal avoids that entirely; the
+             mobile drawer below still gets a proper slide animation. --}}
         <nav
             aria-label="Primary"
-            class="hidden lg:flex flex-nowrap items-center justify-end gap-1 mx-6 max-w-0 overflow-hidden opacity-0 pointer-events-none transition-[max-width,opacity] duration-500 ease-in-out group-data-[nav-state=open]:flex-wrap group-data-[nav-state=open]:max-w-[2400px] group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"
+            class="hidden flex-wrap items-center justify-end gap-1 mx-6 lg:group-data-[nav-state=open]:flex"
         >
             @foreach ($navLinks as $link)
                 <a

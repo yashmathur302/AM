@@ -19,16 +19,15 @@
 
     {{-- Right: text half --}}
     <div class="relative bg-white flex flex-col justify-center gap-6 p-8 md:p-14 lg:p-20">
-        <div class="text-sm font-semibold tracking-widest text-blue-600 uppercase">
+        <div class="flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase">
+            <span class="w-6 h-px bg-slate-400" aria-hidden="true"></span>
             Aurum Equity Partners &mdash; Since 2012
         </div>
 
-        <div class="relative">
-            <h1 class="font-banner font-normal uppercase leading-[0.95] tracking-tight text-navy-900 text-4xl sm:text-5xl lg:text-6xl">
-                Trust is everything.
-            </h1>
-            <span class="hidden sm:block absolute top-2 -right-2 lg:right-8 text-blue-600 text-3xl" aria-hidden="true">&#8599;</span>
-        </div>
+        <h1 class="font-banner font-normal leading-[1.2] tracking-normal text-navy-900 text-5xl sm:text-6xl lg:text-7xl">
+            Trust <em class="text-gold-600 italic">is</em><br>
+            everything.
+        </h1>
 
         <div class="flex items-start gap-4">
             <span class="mt-1 text-2xl text-gold-500" aria-hidden="true">&#10038;</span>
