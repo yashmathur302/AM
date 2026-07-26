@@ -14,6 +14,7 @@ use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TeamController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -54,4 +55,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/leads/{lead}', [LeadController::class, 'show'])->name('leads.show');
         Route::delete('/leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
     });
+});
+
+// TEMPORARY — remove once confirmed working. Re-seeds the pages table
+// (picks up the new homepage title) from a browser since CLI/cron access
+// isn't available. Protected by a long random token; delete ASAP after use.
+Route::get('/system/reseed-f209a7a4e580f24e17812a3be9d3ad2747fad6375dab1214', function () {
+    Artisan::call('db:seed', ['--class' => 'PageSeeder', '--force' => true]);
+
+    return response('<pre>'.e(Artisan::output()).'</pre>');
 });
