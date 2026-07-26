@@ -22,15 +22,15 @@
         {{-- Desktop: horizontal pill bar, hidden until the toggle opens it --}}
         <nav
             aria-label="Primary"
-            class="hidden lg:flex items-center gap-1 mx-6 max-w-0 overflow-hidden opacity-0 pointer-events-none transition-[max-width,opacity] duration-500 ease-in-out group-data-[nav-state=open]:max-w-3xl group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"
+            class="hidden lg:flex flex-wrap items-center justify-end gap-1 mx-6 max-w-0 overflow-hidden opacity-0 pointer-events-none transition-[max-width,opacity] duration-500 ease-in-out group-data-[nav-state=open]:max-w-[2400px] group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"
         >
             @foreach ($navLinks as $link)
                 <a
                     href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                    class="flex items-center gap-1 rounded px-4 py-2 text-sm font-semibold whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-blue-50 text-blue-600' : 'text-navy-700 hover:bg-blue-50 hover:text-blue-600' }}"
+                    class="flex items-center gap-1 rounded px-3 py-2 font-menu text-[25px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-blue-50 text-blue-600' : 'text-navy-700 hover:bg-blue-50 hover:text-blue-600' }}"
                 >
                     {{ $link['label'] }}
-                    <span class="text-[0.6rem] opacity-70" aria-hidden="true">&#9662;</span>
+                    <span class="text-xs opacity-70" aria-hidden="true">&#9662;</span>
                 </a>
             @endforeach
         </nav>
@@ -71,7 +71,7 @@
                     <li>
                         <a
                             href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                            class="block text-lg font-medium {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'text-blue-600' : 'text-navy-700 hover:text-blue-600' }}"
+                            class="block font-menu text-[25px] font-medium {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'text-blue-600' : 'text-navy-700 hover:text-blue-600' }}"
                         >
                             {{ $link['label'] }}
                         </a>
