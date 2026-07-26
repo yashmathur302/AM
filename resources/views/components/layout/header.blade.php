@@ -21,7 +21,7 @@
         {{-- Desktop: horizontal pill bar, hidden until the toggle opens it --}}
         <nav
             aria-label="Primary"
-            class="hidden lg:flex flex-wrap items-center justify-end gap-1 mx-6 max-w-0 overflow-hidden opacity-0 pointer-events-none transition-[max-width,opacity] duration-500 ease-in-out group-data-[nav-state=open]:max-w-[2400px] group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"
+            class="hidden lg:flex flex-nowrap items-center justify-end gap-1 mx-6 max-w-0 overflow-hidden opacity-0 pointer-events-none transition-[max-width,opacity] duration-500 ease-in-out group-data-[nav-state=open]:flex-wrap group-data-[nav-state=open]:max-w-[2400px] group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"
         >
             @foreach ($navLinks as $link)
                 <a
