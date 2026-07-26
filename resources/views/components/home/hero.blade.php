@@ -25,7 +25,7 @@
         </div>
 
         <h1 class="font-banner font-normal leading-[1.2] tracking-normal text-navy-900 text-5xl sm:text-6xl lg:text-7xl">
-            Trust <em class="text-gold-600 italic">is</em><br>
+            Trust is<br>
             everything.
         </h1>
 
