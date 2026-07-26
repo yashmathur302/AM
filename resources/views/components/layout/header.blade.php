@@ -22,7 +22,7 @@
         {{-- Desktop: horizontal pill bar, hidden until the toggle opens it --}}
         <nav
             aria-label="Primary"
-            class="hidden lg:group-data-[nav-state=open]:flex items-center gap-1 mx-6"
+            class="hidden lg:flex items-center gap-1 mx-6 max-w-0 overflow-hidden opacity-0 pointer-events-none transition-[max-width,opacity] duration-500 ease-in-out group-data-[nav-state=open]:max-w-3xl group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"
         >
             @foreach ($navLinks as $link)
                 <a
@@ -60,7 +60,7 @@
             id="primary-nav"
             data-nav
             aria-label="Primary"
-            class="lg:hidden fixed inset-y-0 right-0 z-50 w-80 max-w-[85vw] bg-white shadow-xl px-6 py-8 overflow-y-auto translate-x-full group-data-[nav-state=open]:translate-x-0 transition-transform duration-200"
+            class="lg:hidden fixed inset-y-0 right-0 z-50 w-80 max-w-[85vw] bg-white shadow-xl px-6 py-8 overflow-y-auto translate-x-full group-data-[nav-state=open]:translate-x-0 transition-transform duration-500 ease-in-out"
         >
             <button type="button" data-nav-close aria-label="Close menu" class="mb-8 flex items-center gap-2 text-navy-500 hover:text-navy-900 text-sm">
                 &times; Close
@@ -84,5 +84,5 @@
         </nav>
     </div>
 
-    <div data-nav-overlay class="lg:hidden fixed inset-0 z-40 bg-slate-900/50 opacity-0 pointer-events-none transition-opacity duration-200 group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"></div>
+    <div data-nav-overlay class="lg:hidden fixed inset-0 z-40 bg-slate-900/50 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"></div>
 </header>
