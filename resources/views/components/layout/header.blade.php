@@ -26,7 +26,7 @@
             @foreach ($navLinks as $link)
                 <a
                     href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                    class="flex items-center gap-1 rounded px-3 py-2 font-menu text-[25px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-blue-50 text-blue-600' : 'text-navy-700 hover:bg-blue-50 hover:text-blue-600' }}"
+                    class="flex items-center gap-1 rounded px-2 py-2 font-menu text-[17px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-blue-50 text-blue-600' : 'text-navy-700 hover:bg-blue-50 hover:text-blue-600' }}"
                 >
                     {{ $link['label'] }}
                     <span class="text-xs opacity-70" aria-hidden="true">&#9662;</span>

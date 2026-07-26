@@ -19,11 +19,8 @@
 
     {{-- Right: text half --}}
     <div class="relative bg-white flex flex-col justify-center gap-6 p-8 md:p-14 lg:p-20">
-        <div class="flex flex-wrap gap-4 text-xs font-semibold tracking-widest text-blue-600">
-            <span>[ BUILD ]</span>
-            <span>[ GROW ]</span>
-            <span>[ SCALE ]</span>
-            <span>[ BOOST ]</span>
+        <div class="text-sm font-semibold tracking-widest text-blue-600 uppercase">
+            Aurum Equity Partners &mdash; Since 2012
         </div>
 
         <div class="relative">
