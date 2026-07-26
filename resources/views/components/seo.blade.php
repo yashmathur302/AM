@@ -10,7 +10,7 @@
 
 @php
     $siteName = config('app.name');
-    $fullTitle = $title === $siteName ? $title : "{$title} | {$siteName}";
+    $fullTitle = str_contains($title, $siteName) ? $title : "{$title} | {$siteName}";
     $canonical = url()->current();
     $ogImage = $image ? (str_starts_with($image, 'http') ? $image : asset($image)) : asset(config('seo.default_og_image'));
 @endphp

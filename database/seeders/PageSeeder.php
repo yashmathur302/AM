@@ -13,9 +13,9 @@ class PageSeeder extends Seeder
             [
                 'slug' => 'home',
                 'name' => 'Home',
-                'meta_title' => 'Investment Banking Advisory | Mergers, Acquisitions & Capital Raising',
-                'meta_description' => 'Independent investment banking advisory for mergers & acquisitions, capital raising, and strategic financial consulting. Speak with our senior advisory team.',
-                'focus_keyword' => 'investment banking advisory',
+                'meta_title' => 'Aurum Equity Partners - India Focused Investment Bank',
+                'meta_description' => 'Aurum Equity Partners is an India-focused investment bank advising mid-market and large corporates across mergers, fundraising and restructuring.',
+                'focus_keyword' => 'india investment bank',
             ],
             [
                 'slug' => 'about',
