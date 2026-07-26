@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 210" width="520" height="210" role="img" aria-label="Aurum — Trust is Everything">
+    <!-- Hand-approximated stand-in for the client's real logo file (a
+         gold double-swoosh "C" mark + navy serif AURUM wordmark). Replace
+         this file once the actual exported logo asset is available. -->
+    <g fill="none" stroke="#e0a530" stroke-width="9" stroke-linecap="round">
+        <path d="M 88 30 A 62 62 0 1 0 88 178" />
+        <path d="M 104 46 A 46 46 0 1 0 104 162" />
+    </g>
+    <path d="M 96 40 L 130 40 L 108 62 Z" fill="#e0a530" />
+
+    <text x="70" y="128" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="88" fill="#123a6b" letter-spacing="1">AURUM</text>
+
+    <line x1="150" y1="155" x2="500" y2="155" stroke="#e0a530" stroke-width="1.5" />
+
+    <text x="150" y="196" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="30" fill="#123a6b">Trust is Everything</text>
+</svg>
