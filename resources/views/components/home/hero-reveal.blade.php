@@ -15,16 +15,20 @@
     <div class="relative lg:h-[300vh]" data-hero-reveal>
         <div class="lg:sticky lg:top-0 lg:h-screen w-full flex items-center justify-center overflow-hidden" data-hero-reveal-stage>
             <div
-                class="relative w-full h-[280px] sm:h-[420px] lg:w-[500px] lg:h-[650px] bg-gradient-to-br from-cream-100 to-cream-200 flex items-center justify-center"
+                class="relative w-full h-[280px] sm:h-[420px] lg:w-[500px] lg:h-[650px] overflow-hidden"
                 data-hero-reveal-image
             >
+                <img
+                    src="{{ asset('images/hero-banner-meeting.jpg') }}"
+                    alt="Advisory team reviewing deal analytics together"
+                    class="absolute inset-0 w-full h-full object-cover"
+                >
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 lg:left-auto lg:right-full lg:mr-4 text-[11px] font-menu uppercase tracking-widest text-slate-500 whitespace-nowrap opacity-100 lg:opacity-[var(--reveal-label,0)] transition-opacity" data-hero-reveal-label>
                     (Aurum)
                 </span>
                 <span class="absolute right-4 top-1/2 -translate-y-1/2 lg:right-auto lg:left-full lg:ml-4 text-[11px] font-menu uppercase tracking-widest text-slate-500 whitespace-nowrap opacity-100 lg:opacity-[var(--reveal-label,0)] transition-opacity" data-hero-reveal-label>
                     (Est. 2012)
                 </span>
-                <span class="text-slate-400 text-sm">Feature image placeholder</span>
             </div>
         </div>
     </div>
