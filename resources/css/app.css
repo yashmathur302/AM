@@ -10,7 +10,7 @@
     }
 
     body {
-        @apply text-slate-800 font-body antialiased bg-blue-50;
+        @apply text-slate-800 font-body antialiased bg-cream-50;
     }
 
     h1, h2, h3, h4, h5, h6 {

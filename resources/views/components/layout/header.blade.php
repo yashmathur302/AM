@@ -12,7 +12,7 @@
     ];
 @endphp
 
-<header class="group sticky top-0 z-40 bg-blue-50 border-b border-blue-100" data-nav-state="closed">
+<header class="group sticky top-0 z-40 bg-cream-50 border-b border-cream-100" data-nav-state="closed">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
         <a href="{{ route('home') }}" class="flex items-center shrink-0">
             <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-14 sm:h-20 w-auto">

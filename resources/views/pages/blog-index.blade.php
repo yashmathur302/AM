@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-blue-100 py-16">
+    <section class="bg-cream-100 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h1>Insights</h1>
             <p class="mt-4 text-slate-600">Market commentary and analysis from our advisory team.</p>

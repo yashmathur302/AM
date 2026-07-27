@@ -6,8 +6,8 @@
 --}}
 <section class="grid grid-cols-1 md:grid-cols-2 min-h-[560px] md:min-h-[640px]">
     {{-- Left: image half --}}
-    <div class="relative bg-blue-100 flex items-end justify-start p-6 md:p-10 min-h-[320px] md:min-h-0 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-navy-700/40 text-sm">
+    <div class="relative bg-cream-100 flex items-end justify-start p-6 md:p-10 min-h-[320px] md:min-h-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-cream-100 to-cream-200 flex items-center justify-center text-navy-700/40 text-sm">
             Hero image placeholder
         </div>
 
@@ -18,7 +18,7 @@
     </div>
 
     {{-- Right: text half --}}
-    <div class="relative bg-blue-50 flex flex-col justify-center gap-6 p-8 md:p-14 lg:p-20">
+    <div class="relative bg-cream-50 flex flex-col justify-center gap-6 p-8 md:p-14 lg:p-20">
         <div class="flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase">
             <span class="w-6 h-px bg-slate-400" aria-hidden="true"></span>
             Aurum Equity Partners &mdash; Since 2012

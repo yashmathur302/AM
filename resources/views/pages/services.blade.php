@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-blue-50 py-16">
+    <section class="bg-cream-50 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h1>Our Services</h1>
             <p class="mt-4 text-slate-600">Placeholder — replace with the firm's approved services overview.</p>
@@ -26,7 +26,7 @@
         </div>
     </section>
 
-    <section class="bg-blue-100 py-16">
+    <section class="bg-cream-100 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h2>How We Work</h2>
             <div class="mt-10 grid gap-6 md:grid-cols-4">

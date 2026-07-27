@@ -45,6 +45,13 @@
     --color-blue-600: #2461e8;
     --color-blue-700: #1d4fcc;
 
+    /* Warm cream — the site's base/background tier (body, header, footer,
+       banded sections), replacing the earlier blue-tinted base for a
+       warmer, more premium feel. */
+    --color-cream-50: #faf8f4;
+    --color-cream-100: #f2ede2;
+    --color-cream-200: #e8dfcc;
+
     --color-gold-500: #c8a24a;
     --color-gold-600: #ab8636;
 

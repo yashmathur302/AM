@@ -1,4 +1,4 @@
-<footer class="bg-blue-100 text-slate-600 pt-16 pb-8 border-t border-blue-200">
+<footer class="bg-cream-100 text-slate-600 pt-16 pb-8 border-t border-cream-200">
     <div class="max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-8">
             <div>
