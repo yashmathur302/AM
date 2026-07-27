@@ -4,7 +4,7 @@
     <div class="pt-20 pb-12 lg:pt-32 lg:pb-20">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h1 class="font-banner font-normal leading-tight text-navy-900 text-3xl sm:text-5xl lg:text-7xl whitespace-nowrap">
-                Trust is everything.
+                Trust is <span class="relative inline-block">everything<svg class="circle-underline pointer-events-none absolute -inset-x-3 -inset-y-2 sm:-inset-x-5 sm:-inset-y-3 text-gold-500" viewBox="0 0 220 70" preserveAspectRatio="none" aria-hidden="true"><path d="M 12,38 C 12,15 45,4 110,4 C 178,4 208,16 208,38 C 208,60 175,68 110,68 C 48,68 15,58 14,40 C 13,34 15,30 20,28" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>.
             </h1>
             <p class="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed">
                 An India-focused investment bank built on character, competence and connections &mdash; advising mid-market and large corporates across mergers, fundraising and restructuring.

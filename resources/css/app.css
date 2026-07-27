@@ -34,8 +34,47 @@
     }
 }
 
+/* Hand-drawn gold circle that continuously draws itself around a word,
+   holds complete for a moment, fades, then redraws — a stroke-dasharray
+   "draw on" loop rather than a rotating/spinning circle. */
+@layer components {
+    .circle-underline {
+        stroke-dasharray: 458;
+        animation: circle-underline-draw 4.5s ease-in-out infinite;
+    }
+}
+
+@keyframes circle-underline-draw {
+    0% {
+        stroke-dashoffset: 458;
+        opacity: 0;
+    }
+    6% {
+        opacity: 1;
+    }
+    55% {
+        stroke-dashoffset: 0;
+    }
+    78% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        stroke-dashoffset: 458;
+        opacity: 0;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    .circle-underline {
+        animation: none;
+        opacity: 0;
     }
 }

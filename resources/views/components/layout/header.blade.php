@@ -32,10 +32,12 @@
 
         <a
             href="{{ route('contact') }}"
-            class="hidden lg:inline-flex items-center gap-2 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-sm tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+            class="hidden lg:inline-flex items-center gap-2.5 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-sm tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
         >
-            Enquire Now
-            <span aria-hidden="true">&rarr;</span>
+            <span class="leading-none">Enquire Now</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 shrink-0" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
         </a>
 
         {{-- Mobile-only hamburger toggle for the off-canvas drawer below. --}}
