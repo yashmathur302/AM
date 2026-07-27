@@ -18,36 +18,34 @@
             <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-10 sm:h-12 w-auto">
         </a>
 
-        {{-- Desktop: horizontal pill bar that wipes open left-to-right.
-             flex-nowrap never changes between states (only max-width does),
-             so the browser never has to re-evaluate wrapping mid-transition
-             — that's what caused the old height "jump". Overflow-hidden
-             clips the nowrap content until max-width grows past it, which
-             reads as a left-to-right reveal. The target max-width is an
-             overestimate of the real content width (a standard trick for
-             transitioning to an intrinsic size in CSS). --}}
-        <nav
-            aria-label="Primary"
-            class="hidden lg:flex flex-nowrap items-center justify-start gap-1 ml-6 max-w-0 overflow-hidden transition-[max-width] duration-500 ease-in-out group-data-[nav-state=open]:max-w-[64rem]"
-        >
+        {{-- Desktop: plain horizontal nav, always visible — no toggle. --}}
+        <nav aria-label="Primary" class="hidden lg:flex items-center gap-1 ml-6">
             @foreach ($navLinks as $link)
                 <a
                     href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                    class="flex items-center gap-1 rounded px-2 py-2 font-menu text-[17px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
+                    class="rounded px-2 py-2 font-menu text-[17px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
                 >
                     {{ $link['label'] }}
-                    <span class="text-xs opacity-70" aria-hidden="true">&#9662;</span>
                 </a>
             @endforeach
         </nav>
 
+        <a
+            href="{{ route('contact') }}"
+            class="hidden lg:inline-flex items-center gap-2 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-sm tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+        >
+            Enquire Now
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+
+        {{-- Mobile-only hamburger toggle for the off-canvas drawer below. --}}
         <button
             type="button"
             data-nav-toggle
             aria-expanded="false"
             aria-controls="primary-nav"
             aria-label="Toggle menu"
-            class="relative flex items-center gap-3 rounded-xl bg-gold-500 px-5 py-3 text-white shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+            class="lg:hidden relative flex items-center gap-3 rounded-xl bg-gold-500 px-5 py-3 text-white shadow-sm hover:bg-gold-600 transition-colors shrink-0"
         >
             <span class="text-sm font-bold tracking-wide group-data-[nav-state=open]:hidden">MENU</span>
             <span class="text-sm font-bold tracking-wide hidden group-data-[nav-state=open]:inline">CLOSE</span>
