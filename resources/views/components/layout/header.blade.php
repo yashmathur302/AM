@@ -12,7 +12,7 @@
     ];
 @endphp
 
-<header class="group sticky top-0 z-40 bg-white border-b border-slate-100" data-nav-state="closed">
+<header class="group sticky top-0 z-40 bg-blue-50 border-b border-blue-100" data-nav-state="closed">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
         <a href="{{ route('home') }}" class="flex items-center shrink-0">
             <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-14 sm:h-20 w-auto">
@@ -31,7 +31,7 @@
             @foreach ($navLinks as $link)
                 <a
                     href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                    class="flex items-center gap-1 rounded px-2 py-2 font-menu text-[17px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-blue-50 text-blue-600' : 'text-navy-700 hover:bg-blue-50 hover:text-blue-600' }}"
+                    class="flex items-center gap-1 rounded px-2 py-2 font-menu text-[17px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
                 >
                     {{ $link['label'] }}
                     <span class="text-xs opacity-70" aria-hidden="true">&#9662;</span>

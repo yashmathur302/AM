@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-offwhite py-16">
+    <section class="bg-blue-100 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h1>Thank You</h1>
         </div>

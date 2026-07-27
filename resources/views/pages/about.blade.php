@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <section class="bg-offwhite py-16">
+    <section class="bg-blue-100 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h2>Our Values</h2>
             <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

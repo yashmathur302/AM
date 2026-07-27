@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-offwhite py-16">
+    <section class="bg-blue-100 py-16">
         <div class="max-w-3xl mx-auto px-4">
             <h1>{{ $post->title }}</h1>
             <div class="mt-3 flex gap-4 text-sm text-slate-500">
@@ -24,7 +24,7 @@
     </article>
 
     @if ($related->isNotEmpty())
-        <section class="bg-offwhite py-16">
+        <section class="bg-blue-100 py-16">
             <div class="max-w-6xl mx-auto px-4">
                 <x-blog.grid :posts="$related" heading="Related Insights" />
             </div>

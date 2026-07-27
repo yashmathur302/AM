@@ -26,7 +26,7 @@
         </div>
     </section>
 
-    <section class="bg-offwhite py-16">
+    <section class="bg-blue-100 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h2>How We Work</h2>
             <div class="mt-10 grid gap-6 md:grid-cols-4">

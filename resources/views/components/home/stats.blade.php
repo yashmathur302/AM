@@ -7,7 +7,7 @@
     ];
 @endphp
 
-<section class="bg-offwhite py-16">
+<section class="bg-blue-100 py-16">
     <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
         @foreach ($stats as $stat)
             <div class="text-center">
