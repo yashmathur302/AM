@@ -18,12 +18,16 @@
             <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-10 sm:h-12 w-auto">
         </a>
 
-        {{-- Desktop: plain horizontal nav, always visible — no toggle. --}}
-        <nav aria-label="Primary" class="hidden lg:flex items-center gap-1 ml-6">
+        {{-- Desktop: plain horizontal nav, always visible — no toggle.
+             Only shown at xl+ (1280px) — between 1024-1279px there isn't
+             enough room for full-size links plus the Enquire Now button
+             without them crowding together, so that range gets the mobile
+             hamburger/drawer instead. --}}
+        <nav aria-label="Primary" class="hidden xl:flex items-center gap-3 ml-6">
             @foreach ($navLinks as $link)
                 <a
                     href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                    class="rounded px-2 py-2 font-menu text-[17px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
+                    class="rounded px-3 py-2 font-menu text-[19px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
                 >
                     {{ $link['label'] }}
                 </a>
@@ -32,7 +36,7 @@
 
         <a
             href="{{ route('contact') }}"
-            class="hidden lg:inline-flex items-center gap-2.5 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-sm tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+            class="hidden xl:inline-flex items-center gap-2.5 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-sm tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
         >
             <span class="leading-none">Enquire Now</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 shrink-0" aria-hidden="true">
@@ -47,7 +51,7 @@
             aria-expanded="false"
             aria-controls="primary-nav"
             aria-label="Toggle menu"
-            class="lg:hidden relative flex items-center gap-3 rounded-xl bg-gold-500 px-5 py-3 text-white shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+            class="xl:hidden relative flex items-center gap-3 rounded-xl bg-gold-500 px-5 py-3 text-white shadow-sm hover:bg-gold-600 transition-colors shrink-0"
         >
             <span class="text-sm font-bold tracking-wide group-data-[nav-state=open]:hidden">MENU</span>
             <span class="text-sm font-bold tracking-wide hidden group-data-[nav-state=open]:inline">CLOSE</span>
@@ -61,12 +65,12 @@
             <span class="hidden group-data-[nav-state=open]:block text-lg leading-none" aria-hidden="true">&times;</span>
         </button>
 
-        {{-- Mobile: off-canvas drawer, never shown at lg+ --}}
+        {{-- Mobile: off-canvas drawer, never shown at xl+ --}}
         <nav
             id="primary-nav"
             data-nav
             aria-label="Primary"
-            class="lg:hidden fixed inset-y-0 right-0 z-50 w-80 max-w-[85vw] bg-white shadow-xl px-6 py-8 overflow-y-auto translate-x-full group-data-[nav-state=open]:translate-x-0 transition-transform duration-500 ease-in-out"
+            class="xl:hidden fixed inset-y-0 right-0 z-50 w-80 max-w-[85vw] bg-white shadow-xl px-6 py-8 overflow-y-auto translate-x-full group-data-[nav-state=open]:translate-x-0 transition-transform duration-500 ease-in-out"
         >
             <button type="button" data-nav-close aria-label="Close menu" class="mb-8 flex items-center gap-2 text-navy-500 hover:text-navy-900 text-sm">
                 &times; Close
@@ -90,5 +94,5 @@
         </nav>
     </div>
 
-    <div data-nav-overlay class="lg:hidden fixed inset-0 z-40 bg-slate-900/50 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"></div>
+    <div data-nav-overlay class="xl:hidden fixed inset-0 z-40 bg-slate-900/50 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out group-data-[nav-state=open]:opacity-100 group-data-[nav-state=open]:pointer-events-auto"></div>
 </header>
