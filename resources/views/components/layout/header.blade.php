@@ -47,16 +47,16 @@
             aria-expanded="false"
             aria-controls="primary-nav"
             aria-label="Toggle menu"
-            class="relative flex items-center gap-3 rounded-xl bg-gold-500 px-5 py-3 text-navy-900 shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+            class="relative flex items-center gap-3 rounded-xl bg-gold-500 px-5 py-3 text-white shadow-sm hover:bg-gold-600 transition-colors shrink-0"
         >
             <span class="text-sm font-bold tracking-wide group-data-[nav-state=open]:hidden">MENU</span>
             <span class="text-sm font-bold tracking-wide hidden group-data-[nav-state=open]:inline">CLOSE</span>
 
             <span class="grid grid-cols-2 gap-0.5 group-data-[nav-state=open]:hidden" aria-hidden="true">
-                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
-                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
-                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
-                <span class="w-1.5 h-1.5 rounded-[1px] bg-navy-900"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-white"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-white"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-white"></span>
+                <span class="w-1.5 h-1.5 rounded-[1px] bg-white"></span>
             </span>
             <span class="hidden group-data-[nav-state=open]:block text-lg leading-none" aria-hidden="true">&times;</span>
         </button>
