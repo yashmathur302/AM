@@ -18,15 +18,17 @@
             <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-14 sm:h-20 w-auto">
         </a>
 
-        {{-- Desktop: horizontal pill bar, hidden until the toggle opens it.
-             Plain display toggle (no width/opacity transition) — animating
-             this via max-width caused a visible height "jump" as the browser
-             re-evaluated flex-wrap at every intermediate width during the
-             transition. A one-frame reveal avoids that entirely; the
-             mobile drawer below still gets a proper slide animation. --}}
+        {{-- Desktop: horizontal pill bar that wipes open left-to-right.
+             flex-nowrap never changes between states (only max-width does),
+             so the browser never has to re-evaluate wrapping mid-transition
+             — that's what caused the old height "jump". Overflow-hidden
+             clips the nowrap content until max-width grows past it, which
+             reads as a left-to-right reveal. The target max-width is an
+             overestimate of the real content width (a standard trick for
+             transitioning to an intrinsic size in CSS). --}}
         <nav
             aria-label="Primary"
-            class="hidden flex-wrap items-center justify-end gap-1 mx-6 lg:group-data-[nav-state=open]:flex"
+            class="hidden lg:flex flex-nowrap items-center justify-start gap-1 ml-6 max-w-0 overflow-hidden transition-[max-width] duration-500 ease-in-out group-data-[nav-state=open]:max-w-[64rem]"
         >
             @foreach ($navLinks as $link)
                 <a

@@ -1,27 +1,14 @@
-{{-- Homepage opener: big statement heading with two inline stat callouts,
-     followed by a feature image that scroll-pins and grows to fullscreen.
-     Content below is placeholder — copy/styling to be finalised later. --}}
+{{-- Homepage opener: single-line statement heading and subtext, followed by
+     a feature image that scroll-pins and grows to fullscreen. --}}
 <section class="bg-blue-50">
     <div class="pt-20 pb-12 lg:pt-32 lg:pb-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <h1 class="font-banner font-normal uppercase text-center leading-[1.5] text-navy-900 text-4xl sm:text-6xl lg:text-7xl xl:text-8xl">
-                Where
-                <span class="relative inline-block align-baseline">
-                    <span class="absolute -top-6 left-1/2 -translate-x-1/2 w-28 text-[10px] sm:text-[11px] normal-case tracking-tight leading-tight font-menu text-slate-500 hidden sm:block">
-                        $2B+ transactions advised
-                    </span>
-                </span>
-                <br>
-                discipline
-                <br>
-                <span class="relative inline-block align-baseline">
-                    <span class="absolute -top-6 left-1/2 -translate-x-1/2 w-28 text-[10px] sm:text-[11px] normal-case tracking-tight leading-tight font-menu text-slate-500 hidden sm:block">
-                        150+ deals closed
-                    </span>
-                </span>
-                meets
-                <br>execution.
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="font-banner font-normal leading-tight text-navy-900 text-3xl sm:text-5xl lg:text-7xl whitespace-nowrap">
+                Trust is everything.
             </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed">
+                An India-focused investment bank built on character, competence and connections &mdash; advising mid-market and large corporates across mergers, fundraising and restructuring.
+            </p>
         </div>
     </div>
 
