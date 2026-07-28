@@ -27,7 +27,7 @@
 
 {{-- Four separate thin gold lines sitting below the box itself, in the
      page's background, not drawn inside the box. --}}
-<div class="flex flex-col gap-1.5" aria-hidden="true">
+<div class="flex flex-col gap-1" aria-hidden="true">
     <span class="block h-px bg-gold-500"></span>
     <span class="block h-px bg-gold-500"></span>
     <span class="block h-px bg-gold-500"></span>
