@@ -26,11 +26,21 @@
         </div>
 
         <div class="mt-5 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-            <h2 class="font-banner font-normal leading-tight text-navy-900 text-[clamp(1.75rem,1.3rem_+_2vw,3.25rem)]">
-                An India-focused<br>
-                investment bank,<br>
-                <span class="italic text-gold-600">built on trust.</span>
-            </h2>
+            <div>
+                <h2 class="font-banner font-normal leading-tight text-navy-900 text-[clamp(1.75rem,1.3rem_+_2vw,3.25rem)]">
+                    An India-focused<br>
+                    investment bank,<br>
+                    <span class="italic text-gold-600">built on trust.</span>
+                </h2>
+
+                <div class="mt-8 w-48 sm:w-56 aspect-[4/3] rounded-2xl bg-navy-900/5 border border-navy-900/10 flex items-center justify-center overflow-hidden">
+                    <svg class="w-10 h-10 text-navy-900/20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
 
             <div>
                 <p class="text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)] text-slate-600 leading-relaxed">
