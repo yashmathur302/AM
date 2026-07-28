@@ -1,7 +1,7 @@
 {{-- Homepage opener: single-line statement heading and subtext, followed by
      a feature image that scroll-pins and grows to fullscreen. --}}
 <section class="bg-cream-50">
-    <div class="pt-10 pb-12 lg:pt-14 lg:pb-16">
+    <div class="pt-10 pb-4 lg:pt-14 lg:pb-6">
         <div class="w-full px-[5.5%]">
             <h1 data-hero-heading class="font-banner font-normal leading-tight text-navy-900 text-[clamp(2rem,1.26rem_+_3.27vw,6.5rem)] whitespace-nowrap">
                 Trust is <span class="relative inline-block">everything<svg class="circle-underline -rotate-3 pointer-events-none absolute -inset-x-6 -inset-y-5 sm:-inset-x-9 sm:-inset-y-7 text-gold-500" viewBox="0 0 220 70" preserveAspectRatio="none" aria-hidden="true"><path d="M 12,38 C 12,15 45,4 110,4 C 178,4 208,16 208,38 C 208,60 175,68 110,68 C 48,68 15,58 14,40 C 13,34 15,30 20,28" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>.

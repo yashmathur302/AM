@@ -40,8 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         end: (i * STAGGER + DURATION) / totalTime,
     }));
 
-    let target = 0;
-    let current = 0;
+    let lastProgress = -1;
     let rafId = null;
 
     const computeTarget = () => {
@@ -66,15 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Tied 1:1 to scroll position (see hero-reveal.js) so the reveal speed
+    // tracks actual scroll speed instead of trailing at a fixed rate.
     const loop = () => {
-        target = computeTarget();
-        current += (target - current) * 0.15;
+        const target = computeTarget();
 
-        if (Math.abs(target - current) < 0.0005) {
-            current = target;
+        if (target !== lastProgress) {
+            apply(target);
+            lastProgress = target;
         }
 
-        apply(current);
         rafId = requestAnimationFrame(loop);
     };
 

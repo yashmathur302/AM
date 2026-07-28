@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             : 0;
     };
 
-    let current = computeTarget();
     let rafId = null;
+    let lastProgress = -1;
 
     const apply = (progress) => {
         if (!isDesktop()) {
@@ -70,15 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
         image.style.borderRadius = `${lerp(startRadius, 0, progress)}px`;
     };
 
+    // Tied 1:1 to the actual scroll position rather than lerped toward it —
+    // expansion speed now follows the scroll speed directly (fast flick =
+    // fast expansion, slow scroll = slow expansion). Sampling and writing
+    // inside rAF (instead of a scroll-event listener) is what keeps this
+    // smooth rather than stepped, since it's batched to the display refresh.
     const loop = () => {
         const target = computeTarget();
-        current += (target - current) * 0.15;
 
-        if (Math.abs(target - current) < 0.0005) {
-            current = target;
+        if (target !== lastProgress) {
+            apply(target);
+            lastProgress = target;
         }
 
-        apply(current);
         rafId = requestAnimationFrame(loop);
     };
 
