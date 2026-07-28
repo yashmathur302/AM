@@ -68,6 +68,24 @@
     }
 }
 
+/* Continuous marquee strip: the track is two identical copies of the
+   content side by side, translated by exactly -50% (its own set width),
+   so the loop restarts on a pixel-identical frame — no jump or blank gap. */
+@layer components {
+    .animate-marquee {
+        animation: marquee-scroll 28s linear infinite;
+    }
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
