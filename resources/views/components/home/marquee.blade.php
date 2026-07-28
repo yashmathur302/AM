@@ -24,10 +24,10 @@
         @endfor
     </div>
 
-    <div class="absolute inset-x-0 bottom-0 flex flex-col gap-1" aria-hidden="true">
-        <span class="block h-px scale-y-50 bg-cream-50"></span>
-        <span class="block h-px scale-y-50 bg-cream-50"></span>
-        <span class="block h-px scale-y-50 bg-cream-50"></span>
-        <span class="block h-px scale-y-50 bg-cream-50"></span>
+    <div class="absolute inset-x-0 bottom-0 flex flex-col gap-1.5" aria-hidden="true">
+        <span class="block h-px scale-y-25 bg-cream-50"></span>
+        <span class="block h-px scale-y-25 bg-cream-50"></span>
+        <span class="block h-px scale-y-25 bg-cream-50"></span>
+        <span class="block h-px scale-y-25 bg-cream-50"></span>
     </div>
 </section>
