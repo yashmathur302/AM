@@ -2,7 +2,7 @@
      a full-width feature image with a one-time scroll-triggered zoom + fade
      reveal (matches the reference template's .anim-zoomin behavior). --}}
 <section class="bg-cream-50">
-    <div class="pt-16 pb-1 lg:pt-24 lg:pb-2">
+    <div class="pt-16 pb-6 lg:pt-24 lg:pb-10">
         <div class="w-full px-[5.5%]">
             <h1 data-hero-heading class="font-banner font-normal leading-tight text-navy-900 text-[clamp(2rem,1.26rem_+_3.27vw,6.5rem)] whitespace-nowrap">
                 Trust is <span class="relative inline-block">everything<svg class="circle-underline -rotate-3 pointer-events-none absolute -inset-x-6 -inset-y-5 sm:-inset-x-9 sm:-inset-y-7 text-gold-500" viewBox="0 0 220 70" preserveAspectRatio="none" aria-hidden="true"><path d="M 12,38 C 12,15 45,4 110,4 C 178,4 208,16 208,38 C 208,60 175,68 110,68 C 48,68 15,58 14,40 C 13,34 15,30 20,28" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>.
