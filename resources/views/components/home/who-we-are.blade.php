@@ -33,9 +33,9 @@
                     @foreach ($approachItems as $i => $item)
                         <div
                             data-approach-item
-                            class="grid grid-cols-[3rem_1fr] gap-x-4 gap-y-2 py-6 border-b border-dashed border-slate-300 {{ $i === 0 ? 'border-t' : '' }}"
+                            class="grid grid-cols-[3rem_1fr] gap-x-4 gap-y-2 py-6 border-b border-dashed border-[#878482]/60 {{ $i === 0 ? 'border-t' : '' }}"
                         >
-                            <span class="font-menu text-sm text-slate-500">{{ sprintf('%02d', $i + 1) }}</span>
+                            <span class="font-menu text-[18px] leading-[26px] text-navy-900">{{ sprintf('%02d', $i + 1) }}</span>
                             <div>
                                 <h3 class="font-banner text-lg lg:text-xl text-navy-900">{{ $item['title'] }}</h3>
                                 <p class="mt-2 text-sm text-slate-600 leading-relaxed">{{ $item['text'] }}</p>
