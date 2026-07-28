@@ -23,11 +23,13 @@
             </div>
         @endfor
     </div>
-
-    <div class="absolute inset-x-0 bottom-0 flex flex-col gap-1.5" aria-hidden="true">
-        <span class="block h-px bg-cream-50"></span>
-        <span class="block h-px bg-cream-50"></span>
-        <span class="block h-px bg-cream-50"></span>
-        <span class="block h-px bg-cream-50"></span>
-    </div>
 </section>
+
+{{-- Four separate thin gold lines sitting below the box itself, in the
+     page's background, not drawn inside the box. --}}
+<div class="flex flex-col gap-1.5" aria-hidden="true">
+    <span class="block h-px bg-gold-500"></span>
+    <span class="block h-px bg-gold-500"></span>
+    <span class="block h-px bg-gold-500"></span>
+    <span class="block h-px bg-gold-500"></span>
+</div>
