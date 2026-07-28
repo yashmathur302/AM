@@ -3,4 +3,5 @@
 @section('content')
     <x-home.hero-reveal />
     <x-home.marquee />
+    <x-home.who-we-are />
 @endsection
