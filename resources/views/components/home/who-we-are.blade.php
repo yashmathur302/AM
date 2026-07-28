@@ -29,7 +29,7 @@
                     Set up in 2012 and led by a team of qualified, experienced professionals, Aurum Equity Partners advises mid-market and large corporates, multinationals and institutional financial investors across mergers and acquisitions, fundraising, restructuring and corporate strategic advisory.
                 </p>
 
-                <div class="mt-10 lg:mt-14">
+                <div class="mt-10 lg:mt-14" data-approach-wrapper>
                     @foreach ($approachItems as $i => $item)
                         <div
                             data-approach-item

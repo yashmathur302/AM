@@ -1,42 +1,84 @@
-// Scroll-linked reveal for the "Who We Are" approach list: each item slides
-// horizontally into place as it enters the viewport — no opacity change,
-// items stay fully visible throughout, matching the source template's
-// `gsap.from(boxes, { x: "100%", ... })` (opacity was never part of that
-// tween). Tied directly to scroll position (not a one-shot trigger), so it
-// naturally reverses when scrolling back up, without pulling in GSAP.
+// Scroll-linked reveal for the "Who We Are" approach list, matching the
+// source template's GSAP call as closely as possible without pulling in
+// GSAP itself:
+//
+//   gsap.from(boxes, {
+//     x: "100%", duration: 1, stagger: 0.3, ease: "power2.out",
+//     scrollTrigger: {
+//       scrub: 2, trigger: ".approach-wrapper-box",
+//       start: "top 100%", end: "bottom 40%",
+//     }
+//   });
+//
+// The critical detail: all four boxes share ONE scroll-linked timeline
+// driven by the WRAPPER's position (start when its top hits the bottom of
+// the viewport, end when its bottom reaches 40% down the viewport) — the
+// stagger just offsets each item's start time *within* that single
+// timeline, it does not give each item its own independent trigger. A
+// per-item independent trigger (each box watching its own position) is
+// what caused items to reveal one at a time as you scrolled down the
+// whole list, instead of together within one shorter scroll window.
 
 document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('[data-approach-wrapper]');
     const items = document.querySelectorAll('[data-approach-item]');
 
-    if (!items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!wrapper || !items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         return;
     }
 
-    let ticking = false;
+    const DURATION = 1;
+    const STAGGER = 0.3;
+    const OFFSET_PX = 140;
+    const totalTime = DURATION + STAGGER * (items.length - 1);
 
-    const update = () => {
-        ticking = false;
+    // power2.out
+    const ease = (t) => 1 - (1 - t) * (1 - t);
 
+    const itemWindows = Array.from(items).map((_, i) => ({
+        start: (i * STAGGER) / totalTime,
+        end: (i * STAGGER + DURATION) / totalTime,
+    }));
+
+    let target = 0;
+    let current = 0;
+    let rafId = null;
+
+    const computeTarget = () => {
+        const rect = wrapper.getBoundingClientRect();
         const vh = window.innerHeight;
-        const start = vh * 0.95;
-        const end = vh * 0.55;
+        const startTop = vh; // trigger: "top 100%"
+        const endTop = vh * 0.4 - rect.height; // trigger: "bottom 40%"
+        const range = startTop - endTop;
 
-        items.forEach((item) => {
-            const top = item.getBoundingClientRect().top;
-            const progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
+        return range > 0
+            ? Math.min(1, Math.max(0, (startTop - rect.top) / range))
+            : 0;
+    };
 
-            item.style.transform = `translateX(${(1 - progress) * 140}px)`;
+    const apply = (progress) => {
+        items.forEach((item, i) => {
+            const { start, end } = itemWindows[i];
+            const local = end > start ? (progress - start) / (end - start) : 0;
+            const eased = ease(Math.min(1, Math.max(0, local)));
+
+            item.style.transform = `translateX(${(1 - eased) * OFFSET_PX}px)`;
         });
     };
 
-    const onScroll = () => {
-        if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
+    const loop = () => {
+        target = computeTarget();
+        current += (target - current) * 0.15;
+
+        if (Math.abs(target - current) < 0.0005) {
+            current = target;
         }
+
+        apply(current);
+        rafId = requestAnimationFrame(loop);
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
+    rafId = requestAnimationFrame(loop);
+
+    window.addEventListener('beforeunload', () => cancelAnimationFrame(rafId));
 });
