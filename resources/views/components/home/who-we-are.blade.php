@@ -1,9 +1,17 @@
 @php
     $approachItems = [
-        ['title' => 'Independent Advice', 'text' => 'Placeholder value description.'],
-        ['title' => 'Sector Expertise', 'text' => 'Placeholder value description.'],
-        ['title' => 'Disciplined Process', 'text' => 'Placeholder value description.'],
-        ['title' => 'Long-Term Relationships', 'text' => 'Placeholder value description.'],
+        [
+            'title' => 'Character.',
+            'text' => 'A partner-led ethic. Honest counsel, even when it costs us a mandate. Long-term relationships over transactional wins.',
+        ],
+        [
+            'title' => 'Competence.',
+            'text' => 'Senior bankers on every deal. Sector specialists, structuring depth and a track record across cycles and geographies.',
+        ],
+        [
+            'title' => 'Connections.',
+            'text' => 'Three decades of relationships with promoters, funds and corporates — amplified by strategic partners across nine industry verticals.',
+        ],
     ];
 @endphp
 
@@ -33,13 +41,10 @@
                     @foreach ($approachItems as $i => $item)
                         <div
                             data-approach-item
-                            class="grid grid-cols-[3rem_1fr] gap-x-4 gap-y-2 py-6 border-b border-dashed border-[#878482]/60 {{ $i === 0 ? 'border-t' : '' }}"
+                            class="grid sm:grid-cols-[10rem_1fr] gap-x-8 gap-y-2 py-8 border-b border-slate-200 {{ $i === 0 ? 'border-t' : '' }}"
                         >
-                            <span class="font-menu text-[18px] leading-[26px] text-navy-900">{{ sprintf('%02d', $i + 1) }}</span>
-                            <div>
-                                <h3 class="font-banner text-lg lg:text-xl text-navy-900">{{ $item['title'] }}</h3>
-                                <p class="mt-2 text-sm text-slate-600 leading-relaxed">{{ $item['text'] }}</p>
-                            </div>
+                            <h3 class="font-banner italic text-gold-600 text-2xl lg:text-3xl">{{ $item['title'] }}</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">{{ $item['text'] }}</p>
                         </div>
                     @endforeach
                 </div>
