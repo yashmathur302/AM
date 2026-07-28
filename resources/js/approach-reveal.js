@@ -1,8 +1,9 @@
 // Scroll-linked reveal for the "Who We Are" approach list: each item slides
-// in from the right and fades in as it enters the viewport, tied directly
-// to scroll position (not a one-shot trigger) — so it naturally reverses
-// when scrolling back up, matching the source template's scrubbed
-// ScrollTrigger effect but without pulling in GSAP.
+// horizontally into place as it enters the viewport — no opacity change,
+// items stay fully visible throughout, matching the source template's
+// `gsap.from(boxes, { x: "100%", ... })` (opacity was never part of that
+// tween). Tied directly to scroll position (not a one-shot trigger), so it
+// naturally reverses when scrolling back up, without pulling in GSAP.
 
 document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('[data-approach-item]');
@@ -24,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const top = item.getBoundingClientRect().top;
             const progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
 
-            item.style.transform = `translateX(${(1 - progress) * 60}px)`;
-            item.style.opacity = progress.toFixed(3);
+            item.style.transform = `translateX(${(1 - progress) * 140}px)`;
         });
     };
 
