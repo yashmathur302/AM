@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
         end: (i * STAGGER + DURATION) / totalTime,
     }));
 
+    // Smooths out discrete wheel-tick jumps between rAF samples while still
+    // tracking scroll speed (see hero-reveal.js for the same reasoning).
+    items.forEach((item) => {
+        item.style.transition = 'transform 140ms linear';
+    });
+
     let lastProgress = -1;
     let rafId = null;
 

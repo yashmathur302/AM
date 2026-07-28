@@ -52,6 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
             : 0;
     };
 
+    // Mouse wheels deliver scroll in discrete ~100ms ticks, not a continuous
+    // stream — reading position 1:1 made the image jump between ticks
+    // instead of flowing. A short CSS transition fills in each jump, so it
+    // still tracks scroll speed (bigger ticks move further) but the motion
+    // between ticks is smoothed rather than stepped.
+    image.style.transition = 'width 140ms linear, height 140ms linear, border-radius 140ms linear';
+
     let rafId = null;
     let lastProgress = -1;
 
@@ -70,11 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         image.style.borderRadius = `${lerp(startRadius, 0, progress)}px`;
     };
 
-    // Tied 1:1 to the actual scroll position rather than lerped toward it —
-    // expansion speed now follows the scroll speed directly (fast flick =
-    // fast expansion, slow scroll = slow expansion). Sampling and writing
-    // inside rAF (instead of a scroll-event listener) is what keeps this
-    // smooth rather than stepped, since it's batched to the display refresh.
     const loop = () => {
         const target = computeTarget();
 
