@@ -27,13 +27,13 @@
 
         <div class="mt-5 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
-                <h2 class="font-banner font-normal leading-tight text-navy-900 text-[clamp(1.75rem,1.3rem_+_2vw,3.25rem)]">
+                <h2 data-whowe-heading class="w-fit font-banner font-normal leading-tight text-navy-900 text-[clamp(1.75rem,1.3rem_+_2vw,3.25rem)]">
                     An India-focused<br>
                     investment bank,<br>
                     <span class="italic text-gold-600">built on trust.</span>
                 </h2>
 
-                <div class="mt-8 w-48 sm:w-56 aspect-[4/3] rounded-2xl bg-navy-900/5 border border-navy-900/10 flex items-center justify-center overflow-hidden">
+                <div data-whowe-image class="mt-8 rounded-2xl bg-navy-900/5 border border-navy-900/10 flex items-center justify-center overflow-hidden">
                     <svg class="w-10 h-10 text-navy-900/20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
                         <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div>
+            <div data-whowe-right>
                 <p class="text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)] text-slate-600 leading-relaxed">
                     Set up in 2012 and led by a team of qualified, experienced professionals, Aurum Equity Partners advises mid-market and large corporates, multinationals and institutional financial investors across mergers and acquisitions, fundraising, restructuring and corporate strategic advisory.
                 </p>

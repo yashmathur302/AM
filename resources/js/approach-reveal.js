@@ -20,6 +20,36 @@
 // whole list, instead of together within one shorter scroll window.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Size the "Who We Are" image placeholder to match its neighboring
+    // content: width equal to the heading's own rendered text width (not
+    // the full column), height equal to the right column's full height
+    // (paragraph + all 3 approach items) so their bottom edges align.
+    // Only applies at the lg breakpoint where the two columns sit side by
+    // side — below that they stack, so there's no sibling height to match.
+    const whoweHeading = document.querySelector('[data-whowe-heading]');
+    const whoweImage = document.querySelector('[data-whowe-image]');
+    const whoweRight = document.querySelector('[data-whowe-right]');
+
+    if (whoweHeading && whoweImage && whoweRight) {
+        const syncWhoweImageSize = () => {
+            if (!window.matchMedia('(min-width: 1024px)').matches) {
+                whoweImage.style.removeProperty('width');
+                whoweImage.style.removeProperty('height');
+                return;
+            }
+
+            whoweImage.style.width = `${whoweHeading.getBoundingClientRect().width}px`;
+            whoweImage.style.height = `${whoweRight.getBoundingClientRect().height}px`;
+        };
+
+        window.addEventListener('resize', syncWhoweImageSize);
+        syncWhoweImageSize();
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(syncWhoweImageSize);
+        }
+    }
+
     const wrapper = document.querySelector('[data-approach-wrapper]');
     const items = document.querySelectorAll('[data-approach-item]');
 
