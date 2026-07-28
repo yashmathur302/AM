@@ -62,7 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const RANGE = 60; // total px of vertical travel across the section's pass through the viewport
+    // The image is oversized to 130% of the container's height (see the
+    // -top-[15%] h-[130%] classes), leaving a 15%-of-height buffer on each
+    // side to move within. Using a fraction of the container's own height
+    // (rather than a fixed px value) keeps the range proportional and safely
+    // inside that buffer at every breakpoint, instead of overflowing it on
+    // shorter mobile containers.
+    const RANGE_FRACTION = 0.22;
 
     const computeOffset = () => {
         const rect = parallaxContainer.getBoundingClientRect();
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const traveled = vh - rect.top;
         const progress = Math.min(1, Math.max(0, traveled / total));
 
-        return (progress - 0.5) * RANGE;
+        return (progress - 0.5) * rect.height * RANGE_FRACTION;
     };
 
     let rafId = null;
