@@ -4,6 +4,20 @@
 // library — and it's a no-op below the lg breakpoint or with reduced motion.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Keep the subtext's right edge aligned with the heading above it —
+    // the heading's width is fluid (clamp-based font size), so this is
+    // measured rather than a fixed max-width.
+    const heading = document.querySelector('[data-hero-heading]');
+    const subtext = document.querySelector('[data-hero-subtext]');
+
+    if (heading && subtext) {
+        const syncSubtextWidth = () => {
+            subtext.style.maxWidth = `${heading.getBoundingClientRect().width}px`;
+        };
+        window.addEventListener('resize', syncSubtextWidth);
+        syncSubtextWidth();
+    }
+
     const section = document.querySelector('[data-hero-reveal]');
     const stage = document.querySelector('[data-hero-reveal-stage]');
     const image = document.querySelector('[data-hero-reveal-image]');

@@ -13,7 +13,7 @@
 @endphp
 
 <header class="group sticky top-0 z-40 bg-cream-50 border-b border-cream-100" data-nav-state="closed">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
+    <div class="w-full px-[5.5%] flex items-center justify-between py-4">
         <a href="{{ route('home') }}" class="flex items-center shrink-0">
             <img src="{{ asset('images/Aurum_Logo_Colour1-removebg-preview.png') }}" alt="Aurum" class="h-10 sm:h-12 w-auto">
         </a>
@@ -27,7 +27,7 @@
             @foreach ($navLinks as $link)
                 <a
                     href="{{ $link['route'] ? route($link['route']) : '#' }}"
-                    class="rounded px-3 py-2 font-menu text-[19px] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
+                    class="rounded px-3 py-2 font-menu text-[clamp(1.125rem,0.81rem_+_0.39vw,1.4375rem)] font-medium whitespace-nowrap {{ $link['pattern'] && request()->routeIs($link['pattern']) ? 'bg-white text-blue-600' : 'text-navy-700 hover:bg-white hover:text-blue-600' }}"
                 >
                     {{ $link['label'] }}
                 </a>
@@ -36,7 +36,7 @@
 
         <a
             href="{{ route('contact') }}"
-            class="hidden xl:inline-flex items-center gap-2.5 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-sm tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
+            class="hidden xl:inline-flex items-center gap-2.5 rounded-xl bg-gold-500 px-5 py-3 text-white font-bold text-[clamp(0.875rem,0.69rem_+_0.23vw,1.0625rem)] tracking-wide shadow-sm hover:bg-gold-600 transition-colors shrink-0"
         >
             <span class="leading-none">Enquire Now</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 shrink-0" aria-hidden="true">
