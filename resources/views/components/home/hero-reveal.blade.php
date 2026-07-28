@@ -1,5 +1,5 @@
 {{-- Homepage opener: single-line statement heading and subtext, followed by
-     a feature image that scroll-pins and grows to fullscreen. --}}
+     a full-width feature image with a scroll parallax effect. --}}
 <section class="bg-cream-50">
     <div class="pt-16 pb-1 lg:pt-24 lg:pb-2">
         <div class="w-full px-[5.5%]">
@@ -30,18 +30,12 @@
         </div>
     </div>
 
-    <div class="relative lg:h-[300vh]" data-hero-reveal>
-        <div class="lg:sticky lg:top-0 lg:h-screen w-full flex items-center justify-center overflow-hidden" data-hero-reveal-stage>
-            <div
-                class="relative w-full h-[280px] sm:h-[420px] lg:w-[89%] lg:h-[520px] rounded-2xl overflow-hidden"
-                data-hero-reveal-image
-            >
-                <img
-                    src="{{ asset('images/hero-banner-meeting.jpg') }}"
-                    alt="Advisory team reviewing deal analytics together"
-                    class="absolute inset-0 w-full h-full object-cover"
-                >
-            </div>
-        </div>
+    <div class="relative w-full h-[280px] sm:h-[420px] lg:h-[600px] overflow-hidden" data-parallax>
+        <img
+            src="{{ asset('images/hero-banner-meeting.jpg') }}"
+            alt="Advisory team reviewing deal analytics together"
+            data-parallax-image
+            class="absolute inset-x-0 -top-[15%] w-full h-[130%] object-cover"
+        >
     </div>
 </section>
