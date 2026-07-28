@@ -1,7 +1,9 @@
-// Scroll-linked reveal for the homepage opener: the feature image grows from
-// a fixed 500x650 box to fullscreen while pinned, and its corner labels fade
-// in early in the scroll. Plain rAF-throttled scroll handler — no animation
-// library — and it's a no-op below the lg breakpoint or with reduced motion.
+// Scroll-linked reveal for the homepage opener: the feature image starts at
+// the same width as the text content above it (rounded corners), then grows
+// to fullscreen (corners unrounding) while pinned, with its corner labels
+// fading in early in the scroll. Plain rAF-throttled scroll handler — no
+// animation library — and it's a no-op below the lg breakpoint or with
+// reduced motion.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Keep the subtext's right edge aligned with the heading above it —
@@ -26,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const startW = 500;
-    const startH = 650;
+    // Matches the image's own Tailwind classes (lg:w-[89%] lg:h-[520px]
+    // rounded-2xl) so there's no jump when JS first takes over sizing.
+    const CONTENT_WIDTH_FRACTION = 0.89;
+    const startH = 520;
+    const startRadius = 16;
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches;
 
@@ -38,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reset = () => {
         image.style.removeProperty('width');
         image.style.removeProperty('height');
+        image.style.removeProperty('border-radius');
         stage.style.removeProperty('--reveal-label');
     };
 
@@ -55,12 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ? Math.min(1, Math.max(0, -rect.top / scrollable))
             : 0;
 
+        const startW = window.innerWidth * CONTENT_WIDTH_FRACTION;
         const width = lerp(startW, window.innerWidth, progress);
         const height = lerp(startH, window.innerHeight, progress);
+        const radius = lerp(startRadius, 0, progress);
         const labelProgress = Math.min(1, progress / 0.2);
 
         image.style.width = `${width}px`;
         image.style.height = `${height}px`;
+        image.style.borderRadius = `${radius}px`;
         stage.style.setProperty('--reveal-label', labelProgress.toFixed(4));
     };
 

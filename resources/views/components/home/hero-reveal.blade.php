@@ -33,7 +33,7 @@
     <div class="relative lg:h-[300vh]" data-hero-reveal>
         <div class="lg:sticky lg:top-0 lg:h-screen w-full flex items-center justify-center overflow-hidden" data-hero-reveal-stage>
             <div
-                class="relative w-full h-[280px] sm:h-[420px] lg:w-[500px] lg:h-[650px] overflow-hidden"
+                class="relative w-full h-[280px] sm:h-[420px] lg:w-[89%] lg:h-[520px] rounded-2xl overflow-hidden"
                 data-hero-reveal-image
             >
                 <img
@@ -41,10 +41,10 @@
                     alt="Advisory team reviewing deal analytics together"
                     class="absolute inset-0 w-full h-full object-cover"
                 >
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 lg:left-auto lg:right-full lg:mr-4 text-[11px] font-menu uppercase tracking-widest text-slate-500 whitespace-nowrap opacity-100 lg:opacity-[var(--reveal-label,0)] transition-opacity" data-hero-reveal-label>
+                <span class="absolute left-4 bottom-4 lg:opacity-[var(--reveal-label,0)] text-[11px] font-menu uppercase tracking-widest text-white/90 whitespace-nowrap opacity-100 transition-opacity" data-hero-reveal-label>
                     (Aurum)
                 </span>
-                <span class="absolute right-4 top-1/2 -translate-y-1/2 lg:right-auto lg:left-full lg:ml-4 text-[11px] font-menu uppercase tracking-widest text-slate-500 whitespace-nowrap opacity-100 lg:opacity-[var(--reveal-label,0)] transition-opacity" data-hero-reveal-label>
+                <span class="absolute right-4 bottom-4 lg:opacity-[var(--reveal-label,0)] text-[11px] font-menu uppercase tracking-widest text-white/90 whitespace-nowrap opacity-100 transition-opacity" data-hero-reveal-label>
                     (Est. 2012)
                 </span>
             </div>
