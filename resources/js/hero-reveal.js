@@ -1,9 +1,11 @@
 // Scroll-linked reveal for the homepage opener: the feature image starts at
 // the same width as the text content above it (rounded corners), then grows
-// to fullscreen (corners unrounding) while pinned, with its corner labels
-// fading in early in the scroll. Plain rAF-throttled scroll handler — no
-// animation library — and it's a no-op below the lg breakpoint or with
-// reduced motion.
+// to fullscreen (corners unrounding) while pinned. A persistent rAF loop
+// lerps toward the scroll-computed target every frame — tying the size
+// directly 1:1 to the raw scroll event felt laggy/stepped on discrete
+// wheel/trackpad input, this smooths it out continuously regardless of how
+// choppy the incoming scroll events are. No animation library; a no-op
+// below the lg breakpoint or with reduced motion.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Keep the subtext's right edge aligned with the heading above it —
@@ -21,10 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const section = document.querySelector('[data-hero-reveal]');
-    const stage = document.querySelector('[data-hero-reveal-stage]');
     const image = document.querySelector('[data-hero-reveal-image]');
 
-    if (!section || !stage || !image) {
+    if (!section || !image) {
         return;
     }
 
@@ -39,52 +40,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const lerp = (start, end, t) => start + (end - start) * t;
 
-    let ticking = false;
+    if (prefersReducedMotion) {
+        return;
+    }
 
-    const reset = () => {
-        image.style.removeProperty('width');
-        image.style.removeProperty('height');
-        image.style.removeProperty('border-radius');
-        stage.style.removeProperty('--reveal-label');
+    const computeTarget = () => {
+        const rect = section.getBoundingClientRect();
+        const scrollable = rect.height - window.innerHeight;
+        return scrollable > 0
+            ? Math.min(1, Math.max(0, -rect.top / scrollable))
+            : 0;
     };
 
-    const update = () => {
-        ticking = false;
+    let current = computeTarget();
+    let rafId = null;
 
-        if (prefersReducedMotion || !isDesktop()) {
-            reset();
+    const apply = (progress) => {
+        if (!isDesktop()) {
+            image.style.removeProperty('width');
+            image.style.removeProperty('height');
+            image.style.removeProperty('border-radius');
             return;
         }
 
-        const rect = section.getBoundingClientRect();
-        const scrollable = rect.height - window.innerHeight;
-        const progress = scrollable > 0
-            ? Math.min(1, Math.max(0, -rect.top / scrollable))
-            : 0;
-
         const startW = window.innerWidth * CONTENT_WIDTH_FRACTION;
-        const width = lerp(startW, window.innerWidth, progress);
-        const height = lerp(startH, window.innerHeight, progress);
-        const radius = lerp(startRadius, 0, progress);
-        const labelProgress = Math.min(1, progress / 0.2);
 
-        image.style.width = `${width}px`;
-        image.style.height = `${height}px`;
-        image.style.borderRadius = `${radius}px`;
-        stage.style.setProperty('--reveal-label', labelProgress.toFixed(4));
+        image.style.width = `${lerp(startW, window.innerWidth, progress)}px`;
+        image.style.height = `${lerp(startH, window.innerHeight, progress)}px`;
+        image.style.borderRadius = `${lerp(startRadius, 0, progress)}px`;
     };
 
-    const onScroll = () => {
-        if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
+    const loop = () => {
+        const target = computeTarget();
+        current += (target - current) * 0.15;
+
+        if (Math.abs(target - current) < 0.0005) {
+            current = target;
         }
+
+        apply(current);
+        rafId = requestAnimationFrame(loop);
     };
 
-    if (!prefersReducedMotion) {
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll);
-    }
+    rafId = requestAnimationFrame(loop);
 
-    update();
+    window.addEventListener('beforeunload', () => cancelAnimationFrame(rafId));
 });
