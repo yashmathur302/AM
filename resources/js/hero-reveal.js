@@ -1,14 +1,15 @@
-// Homepage opener: subtext-width sync plus a one-time zoom + fade reveal on
-// the full-width feature image, matching the reference template's GSAP call
-// as closely as possible without pulling in GSAP itself:
+// Homepage opener: subtext-width sync, a one-time zoom + fade reveal on the
+// feature image (matching the reference template's GSAP call as closely as
+// possible without pulling in GSAP itself:
 //
 //   gsap.timeline({ scrollTrigger: { trigger: wrap, start: "top 100%" } })
 //     .from(img, { duration: 2, autoAlpha: 0, scale: 1.2, ease: Power2.easeOut });
 //
-// Power2.easeOut is a quadratic ease-out (1 - (1-t)^2), approximated below
-// with the standard easeOutQuad cubic-bezier. It's a single reveal that
-// fires once as the image enters the viewport — not a continuous
-// scroll-tied parallax.
+// Power2.easeOut is a quadratic ease-out, approximated with the standard
+// easeOutQuad cubic-bezier), plus a continuous scroll parallax on top of it.
+// The reveal (opacity/scale) and the parallax (transform: translateY) are
+// separate CSS properties in modern browsers, so both can animate the same
+// image element independently without conflicting.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Keep the subtext's right edge aligned with the heading above it —
@@ -27,29 +28,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const wrap = document.querySelector('[data-zoomin-wrap]');
     const image = document.querySelector('[data-zoomin-image]');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!wrap || !image) {
-        return;
-    }
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        image.classList.remove('opacity-0', 'scale-[1.2]');
-        return;
-    }
-
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-
-            // Tailwind's scale-[] utility sets the standalone CSS `scale`
-            // property, not `transform` — the transition must target that.
-            image.style.transition = 'opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    if (wrap && image) {
+        if (prefersReducedMotion) {
             image.classList.remove('opacity-0', 'scale-[1.2]');
-            obs.unobserve(wrap);
-        });
-    }, { threshold: 0 });
+        } else {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
-    observer.observe(wrap);
+                    // Tailwind's scale-[] utility sets the standalone CSS
+                    // `scale` property, not `transform` — the transition
+                    // must target that, and it won't collide with the
+                    // parallax translateY below since they're separate
+                    // properties.
+                    image.style.transition = 'opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    image.classList.remove('opacity-0', 'scale-[1.2]');
+                    obs.unobserve(wrap);
+                });
+            }, { threshold: 0 });
+
+            observer.observe(wrap);
+        }
+    }
+
+    const parallaxContainer = document.querySelector('[data-parallax]');
+    const parallaxImage = document.querySelector('[data-parallax-image]');
+
+    if (!parallaxContainer || !parallaxImage || prefersReducedMotion) {
+        return;
+    }
+
+    const RANGE = 60; // total px of vertical travel across the section's pass through the viewport
+
+    const computeOffset = () => {
+        const rect = parallaxContainer.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const total = vh + rect.height;
+        const traveled = vh - rect.top;
+        const progress = Math.min(1, Math.max(0, traveled / total));
+
+        return (progress - 0.5) * RANGE;
+    };
+
+    let rafId = null;
+
+    const loop = () => {
+        parallaxImage.style.transform = `translateY(${computeOffset()}px)`;
+        rafId = requestAnimationFrame(loop);
+    };
+
+    rafId = requestAnimationFrame(loop);
+
+    window.addEventListener('beforeunload', () => cancelAnimationFrame(rafId));
 });

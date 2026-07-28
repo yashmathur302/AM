@@ -1,6 +1,7 @@
 {{-- Homepage opener: single-line statement heading and subtext, followed by
      a full-width feature image with a one-time scroll-triggered zoom + fade
-     reveal (matches the reference template's .anim-zoomin behavior). --}}
+     reveal (matches the reference template's .anim-zoomin behavior) plus a
+     continuous parallax drift as the page scrolls past it. --}}
 <section class="bg-cream-50">
     <div class="pt-16 pb-6 lg:pt-24 lg:pb-10">
         <div class="w-full px-[5.5%]">
@@ -31,12 +32,13 @@
         </div>
     </div>
 
-    <div class="relative w-full h-[280px] sm:h-[420px] lg:h-[600px] overflow-hidden" data-zoomin-wrap>
+    <div class="relative w-full h-[280px] sm:h-[420px] lg:h-[600px] overflow-hidden" data-zoomin-wrap data-parallax>
         <img
             src="{{ asset('images/hero-banner-meeting.jpg') }}"
             alt="Advisory team reviewing deal analytics together"
             data-zoomin-image
-            class="absolute inset-0 w-full h-full object-cover opacity-0 scale-[1.2]"
+            data-parallax-image
+            class="absolute inset-x-0 -top-[15%] w-full h-[130%] object-cover opacity-0 scale-[1.2]"
         >
     </div>
 </section>
