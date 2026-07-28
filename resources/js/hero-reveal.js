@@ -1,10 +1,14 @@
-// Homepage opener: subtext-width sync plus a scroll parallax effect on the
-// full-width feature image. The image is oversized (130% height, offset
-// -15% from the top) inside an overflow-hidden container, and translateY
-// shifts it as the section passes through the viewport — since transform
-// is compositor-only (no layout/reflow), it can be set directly from the
-// raw scroll position every animation frame with no smoothing needed and
-// no lag, unlike the old width/height expansion approach.
+// Homepage opener: subtext-width sync plus a one-time zoom + fade reveal on
+// the full-width feature image, matching the reference template's GSAP call
+// as closely as possible without pulling in GSAP itself:
+//
+//   gsap.timeline({ scrollTrigger: { trigger: wrap, start: "top 100%" } })
+//     .from(img, { duration: 2, autoAlpha: 0, scale: 1.2, ease: Power2.easeOut });
+//
+// Power2.easeOut is a quadratic ease-out (1 - (1-t)^2), approximated below
+// with the standard easeOutQuad cubic-bezier. It's a single reveal that
+// fires once as the image enters the viewport — not a continuous
+// scroll-tied parallax.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Keep the subtext's right edge aligned with the heading above it —
@@ -21,33 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
         syncSubtextWidth();
     }
 
-    const container = document.querySelector('[data-parallax]');
-    const image = document.querySelector('[data-parallax-image]');
+    const wrap = document.querySelector('[data-zoomin-wrap]');
+    const image = document.querySelector('[data-zoomin-image]');
 
-    if (!container || !image || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!wrap || !image) {
         return;
     }
 
-    const RANGE = 60; // total px of vertical travel across the section's pass through the viewport
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        image.classList.remove('opacity-0', 'scale-[1.2]');
+        return;
+    }
 
-    const computeOffset = () => {
-        const rect = container.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const total = vh + rect.height;
-        const traveled = vh - rect.top;
-        const progress = Math.min(1, Math.max(0, traveled / total));
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                return;
+            }
 
-        return (progress - 0.5) * RANGE;
-    };
+            // Tailwind's scale-[] utility sets the standalone CSS `scale`
+            // property, not `transform` — the transition must target that.
+            image.style.transition = 'opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            image.classList.remove('opacity-0', 'scale-[1.2]');
+            obs.unobserve(wrap);
+        });
+    }, { threshold: 0 });
 
-    let rafId = null;
-
-    const loop = () => {
-        image.style.transform = `translateY(${computeOffset()}px)`;
-        rafId = requestAnimationFrame(loop);
-    };
-
-    rafId = requestAnimationFrame(loop);
-
-    window.addEventListener('beforeunload', () => cancelAnimationFrame(rafId));
+    observer.observe(wrap);
 });
