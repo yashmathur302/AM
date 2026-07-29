@@ -5,4 +5,5 @@
     <x-home.marquee />
     <x-home.who-we-are />
     <x-home.stats />
+    <x-home.expertise />
 @endsection

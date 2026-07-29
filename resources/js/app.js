@@ -3,3 +3,4 @@ import './nav';
 import './hero-reveal';
 import './approach-reveal';
 import './stats-counter';
+import './expertise-stack';
