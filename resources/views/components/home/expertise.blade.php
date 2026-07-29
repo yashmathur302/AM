@@ -44,7 +44,7 @@
      below lg the panels just stack in normal document flow instead. --}}
 <section class="bg-cream-50 mt-10 lg:mt-16">
     <div class="w-full px-[5.5%]">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-12 lg:pb-16">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-16 lg:pb-24">
             <h2 class="font-banner font-normal leading-tight text-navy-900 text-[clamp(1.75rem,1.3rem_+_2vw,3.25rem)]">
                 Four practices.<br>
                 <span class="italic text-gold-600">One promise.</span>
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    <div data-stack-wrapper class="relative border-t border-navy-900/10">
+    <div data-stack-wrapper class="relative">
         <div data-stack-sticky class="lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
             @foreach ($practices as $i => $practice)
                 <div

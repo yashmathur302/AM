@@ -84,7 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
             activeIndex = -1;
 
             if (desktop) {
-                wrapper.style.height = `${items.length * 100}vh`;
+                // Pin range while sticky = (wrapper height - one viewport).
+                // With N items each needing a full viewport of dwell time,
+                // that range must be N viewports, so the wrapper needs to be
+                // N+1 viewports tall — not N, which shortchanges the last
+                // item down to zero dwell time (it would unpin the instant
+                // it became active instead of holding like the others).
+                wrapper.style.height = `${(items.length + 1) * 100}vh`;
             } else {
                 showAllStatic();
             }
@@ -93,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (desktop) {
             const rect = wrapper.getBoundingClientRect();
             const vh = window.innerHeight;
-            const progress = Math.min(items.length - 1, Math.max(0, -rect.top / vh));
+            const progress = Math.min(items.length, Math.max(0, -rect.top / vh));
             const newActive = Math.min(items.length - 1, Math.floor(progress + 0.0001));
 
             items.forEach((item, i) => {
