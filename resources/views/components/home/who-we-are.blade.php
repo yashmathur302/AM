@@ -18,7 +18,7 @@
 {{-- "Who We Are" intro: eyebrow, two-line serif statement heading (left),
      firm description paragraph plus a scroll-linked approach list (right),
      both columns starting on the same row. --}}
-<section class="bg-cream-50 pb-16 lg:pb-24 mt-10 lg:mt-16">
+<section class="bg-cream-50 mt-10 lg:mt-16">
     <div class="w-full px-[5.5%]">
         <div class="flex items-center gap-3 text-xs font-menu font-semibold tracking-[0.2em] text-slate-500 uppercase">
             <span class="w-6 h-px bg-slate-400" aria-hidden="true"></span>

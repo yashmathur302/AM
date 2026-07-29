@@ -1,19 +1,57 @@
 @php
     $stats = [
-        ['value' => '$2B+', 'label' => 'Transactions Advised'],
-        ['value' => '150+', 'label' => 'Deals Closed'],
-        ['value' => '20+', 'label' => 'Years Combined Experience'],
-        ['value' => '98%', 'label' => 'Client Retention'],
+        [
+            'value' => 200,
+            'suffix' => '+',
+            'label' => 'Transactions Closed',
+            'description' => 'Successfully concluded across every major sector of the Indian economy.',
+        ],
+        [
+            'value' => 2000,
+            'suffix' => '+',
+            'label' => 'Deals Scrutinised',
+            'description' => 'Pattern-recognition compounded over a decade of disciplined diligence.',
+        ],
+        [
+            'value' => 5,
+            'suffixWord' => 'decades',
+            'label' => 'Cumulative Deal Experience',
+            'description' => "Senior bankers with a craftsman's view of structuring and execution.",
+        ],
+        [
+            'value' => 4,
+            'suffixWord' => 'cities',
+            'label' => 'India Footprint',
+            'description' => 'Delhi NCR · Mumbai · Bengaluru · Chennai — close to clients, capital and policy.',
+        ],
     ];
 @endphp
 
-<section class="bg-cream-100 py-16">
-    <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-        @foreach ($stats as $stat)
-            <div class="text-center">
-                <div class="font-heading text-3xl text-navy-800">{{ $stat['value'] }}</div>
-                <div class="mt-2 text-sm text-slate-600">{{ $stat['label'] }}</div>
+{{-- Stat counters: an inset gold card (not full-bleed like the marquee),
+     rounded corners, white text. Numbers count up from 0 once the card
+     scrolls into view. --}}
+<section class="bg-cream-50 mt-10 lg:mt-16">
+    <div class="px-[5.5%]">
+        <div class="rounded-[2rem] bg-gold-500 px-8 py-12 sm:px-12 lg:px-16 lg:py-16">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+                @foreach ($stats as $i => $stat)
+                    <div class="{{ $i > 0 ? 'lg:border-l lg:border-white/25 lg:pl-8' : '' }}">
+                        <div class="flex items-baseline gap-2">
+                            <span
+                                data-stat-counter
+                                data-value="{{ $stat['value'] }}"
+                                data-suffix="{{ $stat['suffix'] ?? '' }}"
+                                class="font-banner text-white text-[clamp(1.75rem,1.3rem_+_2vw,2.75rem)] leading-none whitespace-nowrap"
+                            >0{{ $stat['suffix'] ?? '' }}</span>
+                            @if (isset($stat['suffixWord']))
+                                <span class="font-banner font-normal text-white/70 text-[clamp(1.125rem,1rem_+_0.6vw,1.5rem)] leading-none">{{ $stat['suffixWord'] }}</span>
+                            @endif
+                        </div>
+                        <p class="mt-3 text-[11px] font-menu font-semibold tracking-[0.15em] uppercase text-white/70">{{ $stat['label'] }}</p>
+                        <p class="mt-2 text-sm text-white/80 leading-relaxed">{{ $stat['description'] }}</p>
+                    </div>
+                @endforeach
             </div>
-        @endforeach
+        </div>
     </div>
 </section>
