@@ -47,7 +47,7 @@
                                 <span class="font-banner font-normal text-white/70 text-[clamp(1.25rem,1.1rem_+_0.7vw,1.75rem)] leading-none">{{ $stat['suffixWord'] }}</span>
                             @endif
                         </div>
-                        <p class="mt-3 font-banner font-semibold text-white text-[clamp(1.25rem,1.1rem_+_0.7vw,1.75rem)] leading-snug">{{ $stat['label'] }}</p>
+                        <p class="mt-3 font-banner font-semibold text-white text-[clamp(0.95rem,0.85rem_+_0.4vw,1.2rem)] leading-snug whitespace-nowrap">{{ $stat['label'] }}</p>
                         <p class="mt-2 text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)] text-white/80 leading-relaxed">{{ $stat['description'] }}</p>
                     </div>
                 @endforeach
