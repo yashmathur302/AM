@@ -14,21 +14,83 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Keep the subtext's right edge aligned with the heading above it —
     // the heading's width is fluid (clamp-based font size), so this is
-    // measured rather than a fixed max-width.
+    // measured rather than a fixed max-width. Re-run once the typewriter
+    // below finishes too, since the heading grows from empty to full width
+    // as it types and the initial measurement would otherwise be ~0.
     const heading = document.querySelector('[data-hero-heading]');
     const subtext = document.querySelector('[data-hero-subtext]');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let syncSubtextWidth = () => {};
 
     if (heading && subtext) {
-        const syncSubtextWidth = () => {
+        syncSubtextWidth = () => {
             subtext.style.maxWidth = `${heading.getBoundingClientRect().width}px`;
         };
         window.addEventListener('resize', syncSubtextWidth);
         syncSubtextWidth();
     }
 
+    // Heading types out character by character; once fully typed, the gold
+    // circle draws once around "everything" and the subtext fades in from
+    // slightly above its resting position — matching the requested order
+    // (heading finishes first, then the circle plays, not concurrently).
+    const typewriterEls = document.querySelectorAll('[data-typewriter]');
+    const circle = document.querySelector('[data-circle]');
+
+    if (typewriterEls.length) {
+        const revealSubtext = () => {
+            if (!subtext) {
+                return;
+            }
+            subtext.style.transition = 'opacity 700ms ease-out, transform 700ms ease-out';
+            subtext.classList.remove('opacity-0', '-translate-y-4');
+        };
+
+        if (prefersReducedMotion) {
+            typewriterEls.forEach((el) => {
+                el.textContent = el.dataset.text || '';
+            });
+            syncSubtextWidth();
+            revealSubtext();
+            // Circle stays hidden under reduced motion (see app.css).
+        } else {
+            const segments = Array.from(typewriterEls).map((el) => ({
+                el,
+                text: el.dataset.text || '',
+                i: 0,
+            }));
+            const CHAR_DELAY = 38;
+            let segIndex = 0;
+
+            const typeStep = () => {
+                if (segIndex >= segments.length) {
+                    syncSubtextWidth();
+                    if (circle) {
+                        circle.classList.add('is-drawing');
+                    }
+                    revealSubtext();
+                    return;
+                }
+
+                const seg = segments[segIndex];
+
+                if (seg.i < seg.text.length) {
+                    seg.el.textContent += seg.text[seg.i];
+                    seg.i += 1;
+                    setTimeout(typeStep, CHAR_DELAY);
+                } else {
+                    segIndex += 1;
+                    typeStep();
+                }
+            };
+
+            typeStep();
+        }
+    }
+
     const wrap = document.querySelector('[data-zoomin-wrap]');
     const image = document.querySelector('[data-zoomin-image]');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (wrap && image) {
         if (prefersReducedMotion) {

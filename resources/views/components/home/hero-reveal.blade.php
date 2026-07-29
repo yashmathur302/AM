@@ -6,10 +6,10 @@
     <div class="pt-16 pb-6 lg:pt-24 lg:pb-10">
         <div class="w-full px-[5.5%]">
             <h1 data-hero-heading class="font-banner font-normal leading-tight text-navy-900 text-[clamp(2rem,1.26rem_+_3.27vw,6.5rem)] whitespace-nowrap">
-                Trust is <span class="relative inline-block">everything<svg class="circle-underline -rotate-3 pointer-events-none absolute -inset-x-6 -inset-y-5 sm:-inset-x-9 sm:-inset-y-7 text-gold-500" viewBox="0 0 220 70" preserveAspectRatio="none" aria-hidden="true"><path d="M 12,38 C 12,15 45,4 110,4 C 178,4 208,16 208,38 C 208,60 175,68 110,68 C 48,68 15,58 14,40 C 13,34 15,30 20,28" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>.
+                <span data-typewriter data-text="Trust is "></span><span class="relative inline-block"><span data-typewriter data-text="everything"></span><svg data-circle class="circle-underline -rotate-3 pointer-events-none absolute -inset-x-6 -inset-y-5 sm:-inset-x-9 sm:-inset-y-7 text-gold-500" viewBox="0 0 220 70" preserveAspectRatio="none" aria-hidden="true"><path d="M 12,38 C 12,15 45,4 110,4 C 178,4 208,16 208,38 C 208,60 175,68 110,68 C 48,68 15,58 14,40 C 13,34 15,30 20,28" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span data-typewriter data-text="."></span>
             </h1>
 
-            <p data-hero-subtext class="mt-6 text-[clamp(1.125rem,1.06rem_+_0.27vw,1.5rem)] text-slate-600 leading-relaxed">
+            <p data-hero-subtext class="mt-6 text-[clamp(1.125rem,1.06rem_+_0.27vw,1.5rem)] text-slate-600 leading-relaxed opacity-0 -translate-y-4">
                 An India-focused investment bank built on character, competence and connections &mdash; advising mid-market and large corporates across mergers, fundraising and restructuring.
             </p>
 
