@@ -41,14 +41,14 @@
                                 data-stat-counter
                                 data-value="{{ $stat['value'] }}"
                                 data-suffix="{{ $stat['suffix'] ?? '' }}"
-                                class="font-banner text-white text-[clamp(1.75rem,1.3rem_+_2vw,2.75rem)] leading-none whitespace-nowrap"
+                                class="font-banner text-white text-[clamp(2rem,1.4rem_+_2.5vw,3.25rem)] leading-none whitespace-nowrap"
                             >0{{ $stat['suffix'] ?? '' }}</span>
                             @if (isset($stat['suffixWord']))
-                                <span class="font-banner font-normal text-white/70 text-[clamp(1.125rem,1rem_+_0.6vw,1.5rem)] leading-none">{{ $stat['suffixWord'] }}</span>
+                                <span class="font-banner font-normal text-white/70 text-[clamp(1.25rem,1.1rem_+_0.7vw,1.75rem)] leading-none">{{ $stat['suffixWord'] }}</span>
                             @endif
                         </div>
-                        <p class="mt-3 text-[11px] font-menu font-semibold tracking-[0.15em] uppercase text-white/70">{{ $stat['label'] }}</p>
-                        <p class="mt-2 text-sm text-white/80 leading-relaxed">{{ $stat['description'] }}</p>
+                        <p class="mt-3 font-banner font-semibold text-white text-[clamp(1.25rem,1.1rem_+_0.7vw,1.75rem)] leading-snug">{{ $stat['label'] }}</p>
+                        <p class="mt-2 text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)] text-white/80 leading-relaxed">{{ $stat['description'] }}</p>
                     </div>
                 @endforeach
             </div>

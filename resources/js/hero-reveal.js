@@ -31,20 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
         syncSubtextWidth();
     }
 
-    // Heading types out character by character; once fully typed, the gold
-    // circle draws once around "everything" and the subtext fades in from
-    // slightly above its resting position — matching the requested order
-    // (heading finishes first, then the circle plays, not concurrently).
+    // Sequenced reveal: heading types out fully, THEN (after a pause) the
+    // subtext fades in, THEN (after its own transition finishes plus a
+    // pause) the CTA buttons fade in, and only once all three have fully
+    // landed does the gold circle draw around "everything" — each stage
+    // waits for the previous one to completely finish before starting,
+    // rather than overlapping.
     const typewriterEls = document.querySelectorAll('[data-typewriter]');
     const circle = document.querySelector('[data-circle]');
+    const ctas = document.querySelector('[data-hero-ctas]');
+
+    const GAP = 250; // pause between one stage finishing and the next starting
+    const REVEAL_DURATION = 700; // matches the transition duration used below
 
     if (typewriterEls.length) {
-        const revealSubtext = () => {
-            if (!subtext) {
+        const reveal = (el, duration) => {
+            if (!el) {
                 return;
             }
-            subtext.style.transition = 'opacity 700ms ease-out, transform 700ms ease-out';
-            subtext.classList.remove('opacity-0', '-translate-y-4');
+            el.style.transition = `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`;
+            el.classList.remove('opacity-0', '-translate-y-4');
         };
 
         if (prefersReducedMotion) {
@@ -52,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.textContent = el.dataset.text || '';
             });
             syncSubtextWidth();
-            revealSubtext();
+            reveal(subtext, 0);
+            reveal(ctas, 0);
             // Circle stays hidden under reduced motion (see app.css).
         } else {
             const segments = Array.from(typewriterEls).map((el) => ({
@@ -66,10 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const typeStep = () => {
                 if (segIndex >= segments.length) {
                     syncSubtextWidth();
-                    if (circle) {
-                        circle.classList.add('is-drawing');
-                    }
-                    revealSubtext();
+
+                    setTimeout(() => {
+                        reveal(subtext, REVEAL_DURATION);
+
+                        setTimeout(() => {
+                            reveal(ctas, REVEAL_DURATION);
+
+                            setTimeout(() => {
+                                if (circle) {
+                                    circle.classList.add('is-drawing');
+                                }
+                            }, REVEAL_DURATION + GAP);
+                        }, REVEAL_DURATION + GAP);
+                    }, GAP);
+
                     return;
                 }
 

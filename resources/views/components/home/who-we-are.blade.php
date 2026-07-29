@@ -56,7 +56,7 @@
                             <span class="font-menu text-[18px] leading-[26px] text-navy-900">{{ sprintf('%02d', $i + 1) }}</span>
                             <div>
                                 <h3 class="font-banner text-lg lg:text-xl text-gold-600">{{ $item['title'] }}</h3>
-                                <p class="mt-2 text-sm text-slate-600 leading-relaxed">{{ $item['text'] }}</p>
+                                <p class="mt-2 text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)] text-slate-600 leading-relaxed">{{ $item['text'] }}</p>
                             </div>
                         </div>
                     @endforeach

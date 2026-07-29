@@ -44,7 +44,12 @@
      below lg the panels just stack in normal document flow instead. --}}
 <section class="bg-cream-50 mt-10 lg:mt-16">
     <div class="w-full px-[5.5%]">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-16 lg:pb-24">
+        <div class="flex items-center gap-3 text-xs font-menu font-semibold tracking-[0.2em] text-slate-500 uppercase">
+            <span class="w-6 h-px bg-slate-400" aria-hidden="true"></span>
+            Our Expertise
+        </div>
+
+        <div class="mt-5 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-8 lg:pb-12">
             <h2 class="font-banner font-normal leading-tight text-navy-900 text-[clamp(1.75rem,1.3rem_+_2vw,3.25rem)]">
                 Four practices.<br>
                 <span class="italic text-gold-600">One promise.</span>
@@ -61,7 +66,7 @@
                 <div
                     data-stack-item
                     data-index="{{ $i }}"
-                    class="w-full lg:h-full flex items-center border-b border-navy-900/10 lg:border-b-0 {{ $i > 0 ? 'lg:absolute lg:inset-0 lg:opacity-0' : '' }}"
+                    class="w-full lg:h-full flex items-center lg:items-start lg:pt-20 border-b border-navy-900/10 lg:border-b-0 {{ $i > 0 ? 'lg:absolute lg:inset-0 lg:opacity-0' : '' }}"
                 >
                     <div class="w-full px-[5.5%] py-14 lg:py-0 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                         <div>
@@ -73,7 +78,7 @@
                                 @foreach ($practice['columns'] as $column)
                                     <ul class="space-y-3">
                                         @foreach ($column as $item)
-                                            <li class="text-sm sm:text-base text-slate-600 border-t border-dashed border-[#878482]/50 pt-3">{{ $item }}</li>
+                                            <li class="text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)] text-slate-600 border-t border-dashed border-[#878482]/50 pt-3">{{ $item }}</li>
                                         @endforeach
                                     </ul>
                                 @endforeach

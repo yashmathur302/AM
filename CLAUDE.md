@@ -15,3 +15,12 @@ section's own root element, and nothing else.
   hairlines) are expected to add a little visual extra — that's fine and not
   a violation of this rule; only the section-to-section margin itself must
   stay consistent.
+
+# Homepage body text size rule
+
+Every homepage body paragraph/list-item (not headings, not eyebrows/labels,
+not button text) must use the same font size:
+`text-[clamp(1rem,0.92rem_+_0.35vw,1.25rem)]`. Only the color changes per
+background (e.g. `text-slate-600` on cream sections, `text-white/80` on the
+gold stats card) — never the size. When adding new body copy anywhere on the
+homepage, reuse this exact clamp instead of `text-sm`/`text-base`/a new value.
