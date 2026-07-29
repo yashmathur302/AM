@@ -21,14 +21,15 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Size the "Who We Are" image placeholder to match its neighboring
-    // content: width equal to the heading's own rendered text width (not
-    // the full column), height equal to the right column's full height
+    // content: width a bit wider than the heading's own rendered text width
+    // (not the full column), height equal to the right column's full height
     // (paragraph + all 3 approach items) so their bottom edges align.
     // Only applies at the lg breakpoint where the two columns sit side by
     // side — below that they stack, so there's no sibling height to match.
     const whoweHeading = document.querySelector('[data-whowe-heading]');
     const whoweImage = document.querySelector('[data-whowe-image]');
     const whoweRight = document.querySelector('[data-whowe-right]');
+    const WHOWE_IMAGE_EXTRA_WIDTH = 48;
 
     if (whoweHeading && whoweImage && whoweRight) {
         const syncWhoweImageSize = () => {
@@ -38,8 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            whoweImage.style.width = `${whoweHeading.getBoundingClientRect().width}px`;
-            whoweImage.style.height = `${whoweRight.getBoundingClientRect().height}px`;
+            whoweImage.style.width = `${whoweHeading.getBoundingClientRect().width + WHOWE_IMAGE_EXTRA_WIDTH}px`;
+
+            // The image sits below the heading (mt-8), while the right
+            // column's content starts at the very top of the row — so
+            // matching heights alone doesn't align the bottom edges, it
+            // just overshoots past them by the heading's own height. Using
+            // the image's actual top (fixed by layout, unaffected by its
+            // own height) against the right column's bottom gives the exact
+            // height needed for the two bottom edges to land together.
+            const imageTop = whoweImage.getBoundingClientRect().top;
+            const rightBottom = whoweRight.getBoundingClientRect().bottom;
+            whoweImage.style.height = `${rightBottom - imageTop}px`;
         };
 
         window.addEventListener('resize', syncWhoweImageSize);
